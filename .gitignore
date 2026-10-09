@@ -5,3 +5,6 @@ data/pip.log
 __pycache__/
 *.pyc
 /tmp/
+data/tests/horizons_all.npz
+data/tests/synthetic_results.json
+tap-here.png
