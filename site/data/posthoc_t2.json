@@ -1,0 +1,15 @@
+{
+ "note": "POST HOC, descriptive; written after T2 was scored",
+ "without_featured_axes": {
+  "n": 34,
+  "stat": 0.13700281892506058,
+  "null_mean": 0.09300225192107672,
+  "p": 0.0143985601439856
+ },
+ "one_per_2km_cluster": {
+  "n": 17,
+  "stat": 0.1579826197240491,
+  "null_mean": 0.09129900059109076,
+  "p": 0.007399260073992601
+ }
+}
