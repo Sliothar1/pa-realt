@@ -268,3 +268,26 @@ canvas#dome{width:100%;aspect-ratio:1/1;display:block;border-radius:50%;backgrou
  .credits td:last-child{white-space:normal}.credits{font-size:13px}
  .nearbtn{height:34px}
 }
+
+/* ---- family hub credit ---- */
+.pa-family .pa-hub{border-style:dashed}
+.pa-credit{text-align:center;font:12px/1.5 var(--sans);color:var(--muted);margin:10px 0 0;opacity:.85}
+.pa-credit a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line2);text-underline-offset:2px}
+.pa-credit a:hover{color:var(--gold-soft)}
+/* ---- light this week ---- */
+.lightweek{margin-top:16px}
+.lw{list-style:none;margin:6px 0 4px;padding:0;display:grid;gap:8px}
+.lw li{display:grid;gap:2px;padding:9px 12px;border:1px solid var(--line2);border-radius:12px;background:linear-gradient(90deg,rgba(232,184,96,.07),transparent)}
+.lw a{color:var(--ink);text-decoration:none}.lw a:hover b{color:var(--gold-soft)}
+.lw a i{font-family:var(--serif);color:var(--gold);margin-left:4px}
+.lw-ev{font-size:13.5px;color:var(--ink2)}.lw-t{font-size:13px;color:var(--muted)}.lw-t b{color:var(--gold-soft)}
+.lw-next li{background:none}
+.lw-h{margin:14px 0 4px;font:600 15px var(--serif);color:var(--ink2)}.lw-h i{color:var(--gold)}
+.lw-none{margin:4px 0;font-size:15px}
+.lw-today{margin-top:10px;font-size:13.5px}.lw-today summary{cursor:pointer;color:var(--gold-soft)}
+.lw-today table{margin-top:6px;width:100%}
+/* ---- test results on home page ---- */
+.tres{margin:6px 0 0;font-size:13.5px;padding:6px 10px;border-radius:10px;border:1px solid var(--line2)}
+.tres.yes{background:rgba(232,184,96,.10)}.tres.yes b{color:var(--gold-soft)}
+.tres.no b{color:var(--ink2)}.tres a{color:var(--gold)}
+.visitlink{color:var(--gold);text-decoration:none;font-weight:600}.visitlink:hover{text-decoration:underline}

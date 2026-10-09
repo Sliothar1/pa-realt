@@ -30,10 +30,10 @@ const ERA={pt:[-3199,'c. 3200 BC'],ct:[-3749,'c. 3750 BC'],po:[-3499,'c. 3500 BC
   sc:[-1499,'c. 1500 BC'],sr:[-1499,'c. 1500 BC'],sp:[-1499,'c. 1500 BC'],he:[-2249,'c. 2250 BC'],cu:[-3199,'c. 3200 BC'],bb:[-1499,'c. 1500 BC'],ss:[-1499,'c. 1500 BC']};
 /* class-level evidence on orientation, quoting only our cited sources */
 const TYPE_ORIENT={
- pt:['The national survey of passage tombs (NMS 2024, F. Prendergast) could measure 136 of about 220. 23 are aligned on some solar or lunar target, but only 4 face the midwinter sunrise, and there is no overall clustering (global p = 0.896).',['ng2024']],
- wt:['The NMS scope note says the front of a wedge tomb “invariably faces in a westerly direction”. Whether that means the setting Sun is our pre-registered test T1, which has not been scored yet.',['scope','research']],
- sr:['The NMS scope note says stone rows “are considered to have been aligned on various solar and lunar events”. Clive Ruggles’s surveys of the Cork–Kerry rows found a preference for the Moon’s southern major and minor standstills, often towards prominent hills.',['scope','ruggles94']],
- sp:['The NMS scope note says stone pairs “are considered to have been aligned on various solar and lunar events”. Ruggles’s surveys of Cork–Kerry stone rows found a lunar (southern standstill) preference.',['scope','ruggles94']],
+ pt:['The national survey of passage tombs (NMS 2024, F. Prendergast) could measure 136 of about 220. 23 are aligned on some solar or lunar target, but only 4 face the midwinter sunrise, and there is no overall clustering (global p = 0.896). Our smaller pre-registered test T2 (36 tombs: compass phrases from SMR texts plus 2 surveyed axes) did find more tombs near solstice, equinox and standstill declinations than chance (Holm-adjusted p = 0.019). The two results disagree, and the larger survey carries more weight.',['ng2024','research']],
+ wt:['The NMS scope note says the front of a wedge tomb “invariably faces in a westerly direction”. Our pre-registered test T1 (scored 9 Oct 2026) found 19 of the 51 wedge tombs with a recorded facing direction in the south-west bin that holds the midwinter sunset, against about 3 expected by chance (Holm-adjusted p = 0.0005). That shows a strong south-west to west preference, but not that the builders aimed at the Sun.',['scope','research']],
+ sr:['The NMS scope note says stone rows “are considered to have been aligned on various solar and lunar events”. Clive Ruggles’s surveys of the Cork–Kerry rows found a preference for the Moon’s southern major and minor standstills, often towards prominent hills. Our pre-registered replication on 119 SMR stone rows (T3) found no excess: 6 rows near a standstill declination, against 5.9 expected by chance.',['scope','ruggles94','research']],
+ sp:['The NMS scope note says stone pairs “are considered to have been aligned on various solar and lunar events”. Ruggles’s surveys of Cork–Kerry stone rows found a lunar (southern standstill) preference. Our pre-registered test T5 found that pair and row axes point at horizon peaks no more often than random directions do (58.8% against 59.7%).',['scope','ruggles94','research']],
  sc:['Ruggles (1994) tested 31 Cork–Kerry axial-stone circles and found no solstice or equinox pattern, only a weak cluster near declination −29° (6 of 31). In the NMS scope note the axial stone sits “consistently in the south-western part of the circle”.',['ruggles94','scope']],
  ss:['The NMS scope note says single standing stones are “usually orientated on a north-east–south-west axis, although other orientations do occur”. A single stone has no direction it clearly points in, so astronomical claims are weak.',['scope']],
  ct:['Our sources give no tested orientation pattern for court tombs, so this is not known from our data.',[]],
@@ -46,7 +46,8 @@ const TYPE_ORIENT={
 const TEST={pt:'T2 (passage-tomb declinations) and T4 (intervisibility)',wt:'T1 (wedge tombs and the setting Sun)',sr:'T3 (stone rows and the lunar standstills) and T5 (horizon peaks)',sp:'T5 (horizon peaks)',sc:null,ss:null};
 const PT16={N:0,NNE:22.5,NE:45,ENE:67.5,E:90,ESE:112.5,SE:135,SSE:157.5,S:180,SSW:202.5,SW:225,WSW:247.5,W:270,WNW:292.5,NW:315,NNW:337.5};
 const pt16=az=>Object.keys(PT16)[Math.round(((az%360)+360)%360/22.5)%16];
-const decOf=(az,lat)=>Math.asin(Math.cos(lat*D)*Math.cos(az*D))/D; // flat horizon, h = 0
+const decOf=(az,lat,prof)=>{const h=prof?A.horAt(prof,az):0,ht=h-A.refr(h);return Math.asin(Math.sin(lat*D)*Math.sin(ht*D)+Math.cos(lat*D)*Math.cos(ht*D)*Math.cos(az*D))/D;}; // real (or flat) horizon, Sun's centre with refraction
+let TR=null;const tres=()=>TR||(TR=fetch('data/tests_v1.json').then(r=>r.json()).catch(()=>null));
 let KB=null;const NOTES={};
 async function kb(){if(!KB)KB=await fetch('data/ask_kb.json').then(r=>r.json());return KB;}
 async function notesFor(s){if(s[0].startsWith('NI:'))return null;const c=s[6];if(!(c in NOTES))NOTES[c]=fetch('data/notes/c'+c+'.json').then(r=>r.json()).catch(()=>({}));const n=await NOTES[c];return n[s[0]]||null;}
@@ -57,7 +58,7 @@ function orientPhrases(notes){const out=[];const re=/\b(aligned|orientated|orien
   for(const s of sentences(notes)){if(/\b(field|wall|road|boundary|slope|stream|river|fence|hedge|ditch|lane|track|bank|ridge|valley|house|farm)\b/i.test(s))continue;const m=re.exec(s);if(m){out.push({text:s.trim(),a:m[2],b:m[3]||null,facing:/faces|facing|opens?|opening|entrance/.test(m[1])});if(out.length>=2)break;}}return out;}
 function datePhrases(notes){return sentences(notes).filter(s=>/radiocarbon|\bdated\b|\bdate range\b|\b\d{3,4}\s?(?:-|–)\s?\d{3,4}\s?BC\b|cal\.? BC|excavat/i.test(s)).slice(0,3);}
 function eventDecs(year){const e=A.obliquity(year),i=A.I_MOON;return [['midwinter Sun',-e],['midsummer Sun',e],['equinox Sun',0],['Moon, major standstill (north)',e+i],['Moon, major standstill (south)',-(e+i)],['Moon, minor standstill (north)',e-i],['Moon, minor standstill (south)',-(e-i)]];}
-function matchAxis(az,lat,year){const ds=[-11.25,0,11.25].map(d=>decOf(az+d,lat));const lo=Math.min(...ds),hi=Math.max(...ds);return {dec:decOf(az,lat),lo,hi,hits:eventDecs(year).filter(([,d])=>d>=lo-0.5&&d<=hi+0.5).map(x=>x[0])};}
+function matchAxis(az,lat,year,prof){const ds=[-11.25,0,11.25].map(d=>decOf(az+d,lat,prof));const lo=Math.min(...ds),hi=Math.max(...ds);return {dec:decOf(az,lat,prof),lo,hi,hits:eventDecs(year).filter(([,d])=>d>=lo-0.5&&d<=hi+0.5).map(x=>x[0])};}
 const fmt=d=>(d>=0?'+':'−')+Math.abs(d).toFixed(1)+'°';
 
 /* ---------- generic (all ~6,900 monuments) ---------- */
@@ -65,14 +66,14 @@ async function generic(q,s,ctx){
   const g=s[1],G=ctx.META.groups[g],K=(await kb()).scope[g]||null,ni=s[0].startsWith('NI:'),nt=await notesFor(s);const notes=nt?nt[0]:'',care=nt?nt[1]:null;
   const cls=G.en.replace(/s$/,'').replace(/tombs \(/,'tomb (').toLowerCase();
   if(q==='face'){
-    const [yr,lab]=ERA[g]||[-1999,'c. 2000 BC'];const ev=A.events(s[2],null,yr).filter(e=>e.az!=null);
+    const [yr,lab]=ERA[g]||[-1999,'c. 2000 BC'];const hz=s._hz||null,pr=hz?hz.alt:null;const ev=A.events(s[2],pr,yr).filter(e=>e.az!=null);
     const pick=['WS rise','WS set','SS rise','SS set','EQ rise','MjS rise','MjS set'];
-    let h=`<p>No one has measured this monument’s orientation in our sources, so it is <b>not known</b> whether it faces a sunrise or moonrise. Here is where the key events happen from this spot on a <b>flat horizon</b>, using Earth’s tilt for ${esc(lab)}:</p><ul class="ask-ev">${ev.filter(e=>pick.includes(e.k)).map(e=>`<li><span>${esc(e.en.replace(' (δ = 0°)',''))}</span><b>${e.az.toFixed(0)}° ${pt16(e.az)}</b></li>`).join('')}</ul>`;
+    let h=`<p>No one has measured this monument’s orientation in our sources, so it is <b>not known</b> whether it faces a sunrise or moonrise. Here is where the key events happen from this spot ${hz?`on its <b>real horizon</b> (Copernicus 30 m surface model, which includes trees and buildings)`:'on a <b>flat horizon</b>'}, using Earth’s tilt for ${esc(lab)}:</p><ul class="ask-ev">${ev.filter(e=>pick.includes(e.k)).map(e=>`<li><span>${esc(e.en.replace(' (δ = 0°)',''))}</span><b>${e.az.toFixed(0)}° ${pt16(e.az)}</b></li>`).join('')}</ul>`;
     const op=orientPhrases(notes);const keys=['smr'];
-    if(op.length){h+=`<p>The SMR description records:</p>`+op.map(o=>{const a=PT16[o.a];const m1=matchAxis(a,s[2],yr);let t=`<blockquote>“${esc(o.text)}”</blockquote><p class="ask-calc">${o.b?`Axis ${o.a}–${o.b}`:`${o.facing?'Facing':'Towards'} ${o.a}`}: a ${o.a} bearing (${a}° ± 11°, since compass points are 22.5° apart) gives a declination of ${fmt(m1.lo)} to ${fmt(m1.hi)}`;
-      if(o.b){const m2=matchAxis(PT16[o.b],s[2],yr);t+=`; ${o.b} gives ${fmt(m2.lo)} to ${fmt(m2.hi)}`;const hits=[...new Set(m1.hits.concat(m2.hits))];t+=`. That range includes: ${hits.length?esc(hits.join(', ')):'none of the solar or lunar targets'}.`;}
+    if(op.length){h+=`<p>The SMR description records:</p>`+op.map(o=>{const a=PT16[o.a];const m1=matchAxis(a,s[2],yr,pr);let t=`<blockquote>“${esc(o.text)}”</blockquote><p class="ask-calc">${o.b?`Axis ${o.a}–${o.b}`:`${o.facing?'Facing':'Towards'} ${o.a}`}: a ${o.a} bearing (${a}° ± 11°, since compass points are 22.5° apart) gives a declination of ${fmt(m1.lo)} to ${fmt(m1.hi)}`;
+      if(o.b){const m2=matchAxis(PT16[o.b],s[2],yr,pr);t+=`; ${o.b} gives ${fmt(m2.lo)} to ${fmt(m2.hi)}`;const hits=[...new Set(m1.hits.concat(m2.hits))];t+=`. That range includes: ${hits.length?esc(hits.join(', ')):'none of the solar or lunar targets'}.`;}
       else t+=`. That range includes: ${m1.hits.length?esc(m1.hits.join(', ')):'none of the solar or lunar targets'}.`;
-      return t+` <span class="muted">A compass phrase is far too coarse to prove intent, and real hills move these points.</span></p>`;}).join('');}
+      return t+` <span class="muted">A compass phrase is far too coarse to prove intent.</span></p>`;}).join('');}
     else if(!ni)h+=`<p class="muted">The SMR description gives no compass orientation for this monument.</p>`;
     const to=TYPE_ORIENT[g];if(to){h+=`<p><b>For ${esc(G.en.toLowerCase())} in general:</b> ${esc(to[0])}</p>`;keys.push(...to[1]);}
     return {h,keys:ni?['nismr',...keys.filter(k=>k!=='smr')]:keys};}
@@ -86,7 +87,8 @@ async function generic(q,s,ctx){
     const to=TYPE_ORIENT[g],t=TEST[g];
     let h=`<p>For a single monument, an alignment cannot be proved or disproved: with 12 solar and lunar targets on the horizon, almost any direction lands near one of them. The honest answer comes from <b>groups</b> of monuments, compared against random orientations.</p>`;
     if(to)h+=`<p><b>What is known for ${esc(G.en.toLowerCase())}:</b> ${esc(to[0])}</p>`;
-    if(t)h+=`<p><b>Our test:</b> ${esc(t)} is written down in advance (pre-registered) with its pass rule. It has not been run yet.</p>`;
+    if(t){const R=await tres(),ids=(t.match(/T\d/g)||[]);const vs=R?ids.map(k=>{const v=R.tests[k];return v?`${k}: <b>${v.supported?'supported':'not supported'}</b> (Holm-adjusted p = ${v.p_holm<0.001?v.p_holm.toFixed(4):v.p_holm.toFixed(3)})`:'';}).filter(Boolean).join('; '):'';
+      h+=`<p><b>Our test:</b> ${esc(t)} was written down in advance (pre-registered) with its pass rule, and scored on 9 Oct 2026. ${vs?`Result: ${vs}. `:''}<a href="results.html">See the full results</a>.</p>`;}
     h+=`<p>This monument has not been surveyed individually in our sources, so for it the answer is <b>not known</b>.</p>`;
     return {h,keys:[...(to?to[1]:[]),'research']};}
   if(q==='name'){
@@ -173,5 +175,5 @@ function bind(root,s,f,ctx){
     out.innerHTML=`<div class="ask-ans">${r.h}${r.keys.length?`<p class="ask-src">Sources: ${src([...new Set(r.keys)])}</p>`:''}<p class="ask-foot">${fx?'Hand-written for this featured site.':'Built from this site’s data. No AI.'}</p></div>`;
     if(innerWidth<900)out.scrollIntoView({behavior:'smooth',block:'nearest'});});
 }
-window.PAAsk={panel,bind};
+window.PAAsk={panel,bind,F,src};
 })();

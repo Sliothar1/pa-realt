@@ -4,7 +4,7 @@ const D=Math.PI/180;
 function refr(a){return (1/Math.tan((a+7.31/(a+4.4))*D))/60;}           // Bennett (deg)
 function obliquity(year){const U=(year-2000)/10000,c=[84381.448,-4680.93,-1.55,1999.25,-51.38,-249.67,-39.05,7.12,27.87,5.79,2.45];let s=0;for(let i=0;i<c.length;i++)s+=c[i]*Math.pow(U,i);return s/3600;} // Laskar 1986
 function azFor(dec,lat,h,rising){const p=lat*D,d=dec*D,hh=h*D;const c=(Math.sin(hh)-Math.sin(p)*Math.sin(d))/(Math.cos(p)*Math.cos(d));if(Math.abs(c)>1)return null;let H=Math.acos(c);if(rising)H=-H;let A=Math.atan2(Math.sin(H),Math.cos(H)*Math.sin(p)-Math.tan(d)*Math.cos(p))/D+180;return (A%360+360)%360;}
-function horAt(prof,az,step){if(!prof)return 0;step=step||0.5;const n=prof.length,i=az/step,i0=Math.floor(i)%n,i1=(i0+1)%n,f=i-Math.floor(i);return prof[i0]*(1-f)+prof[i1]*f;}
+function horAt(prof,az,step){if(!prof)return 0;step=step||360/prof.length;az=((az%360)+360)%360;const n=prof.length,i=az/step,i0=Math.floor(i)%n,i1=(i0+1)%n,f=i-Math.floor(i);return prof[i0]*(1-f)+prof[i1]*f;}
 function eventAz(dec,lat,prof,rising,body){const par=body==='moon'?0.95:0;let A=rising?90:270;for(let k=0;k<8;k++){const ha=horAt(prof,A);const hg=ha-refr(ha)+par*Math.cos(ha*D);const A2=azFor(dec,lat,hg,rising);if(A2==null)return null;A=A2;}return A;}
 const I_MOON=5.145;
 function events(lat,prof,year){const e=obliquity(year);return [
