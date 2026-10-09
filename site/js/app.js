@@ -277,5 +277,5 @@ function renderSources(){
   $('#srcList').innerHTML=items.map(i=>`<li>${i}</li>`).join('');
 }
 })();
-// Hidden gem for phones: triple-tap the star mark to draw midwinter rays (same as pressing G)
-(()=>{const m=document.querySelector('.brandlink .mark');if(!m)return;let t=[];m.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const now=Date.now();t=t.filter(x=>now-x<800);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));}},true);})();
+// Hidden gem for phones: triple-tap the PA Réalt logo (star + name) to draw midwinter rays (same as pressing G)
+(()=>{const b=document.querySelector('.brandlink');if(!b)return;let t=[];const hit=e=>{e.preventDefault();const now=Date.now();t=t.filter(x=>now-x<1200);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));const m=document.getElementById('map');if(m&&m.scrollIntoView)m.scrollIntoView({behavior:'smooth',block:'center'});}};b.style.touchAction='manipulation';b.addEventListener('click',hit);})();
