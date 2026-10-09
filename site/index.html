@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--CFG:title--><title>PA Réalt · Stone and Sky · Garry Lohan</title><!--/CFG-->
+<!--CFG:meta--><meta name="description" content="PA Réalt · Stone and Sky: an interactive map of Ireland’s Neolithic and Bronze Age monuments (National Monuments Service open data) with sunrise, sunset and lunar-standstill rays, the Newgrange winter-solstice light, a live night sky over Brú na Bóinne, and an honest look at claims vs evidence. By Garry Lohan (ATU Galway)."><meta name="author" content="Garry Lohan"><!--/CFG-->
+<meta name="theme-color" content="#1a080c">
+<script>(function(){try{var m=/[?&]theme=(night|dawn)/.exec(location.search);var t=m?m[1]:localStorage.getItem('pa-realt-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+<script src="js/config.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-realt" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M4 50 H60"/>
+   <path d="M9 50 C13 36 23 30.5 31 30.5 C39 30.5 49 36 53 50"/>
+   <path d="M12.5 44.5 l1.2 -.6 M17 39.6 l1 -.9 M22.4 35.6 l.8 -1 M28.6 33 l.5 -1.1 M35 33 l.4 -1.1 M40.8 35.4 l.9 -1 M46 39.4 l1 -.9 M50 44.2 l1.2 -.6" opacity=".7"/>
+   <path d="M27.5 50 V44.6 H34.5 V50"/>
+   <path class="slot" d="M28.5 42.2 H33.5"><title>Roof-box: 8.58 GMT, 21 Dec 1969, the first pencil of light (M. J. O’Kelly)</title></path>
+   <path class="beam" d="M58 46.5 L33.5 42.2"/>
+   <path d="M54 50 a4.2 4.2 0 0 1 8.4 0" opacity=".9"/>
+   <path class="twinkle" d="M46 8 L47.1 12.9 L52 14 L47.1 15.1 L46 20 L44.9 15.1 L40 14 L44.9 12.9 Z" stroke-width="1.2"/>
+   <circle cx="21" cy="17" r=".7" fill="currentColor"/><circle cx="12" cy="24" r=".5" fill="currentColor"/><circle cx="30" cy="11" r=".5" fill="currentColor"/>
+  </g></symbol>
+  <symbol id="i-dolphin" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 41 C16 24 36 13 49 25 L55 29 C47 28 41 27 35 29 C28 31 22 36 18 42 L13 41"/><path d="M26.5 22.4 L30 15 L33.5 20.8"/><path d="M4 53 C9 49 13 49 18 53 S27 57 32 53 S41 49 46 53 S55 57 60 53"/></g></symbol>
+  <symbol id="i-pa" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="32" r="29"/><circle cx="32" cy="32" r="24.5" opacity=".45"/><text x="32" y="40.5" text-anchor="middle" fill="currentColor" stroke="none" font-family="Iowan Old Style,Palatino,Georgia,serif" font-size="23" font-weight="600" letter-spacing="1">PA</text></g></symbol>
+  <symbol id="i-spiral3" viewBox="0 0 220 34"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+   <path d="M4 17 H70"/><path d="M150 17 H216"/>
+   <path d="M110 17 m0 0 c2 0 3 -2 2 -3.5 c-1.5 -2.5 -6 -1.5 -6 2 c0 4.5 6 6.5 9.5 3 c4.2 -4.2 .5 -11 -6 -10.5 c-7.5 .6 -10.5 9 -6 14.5"/>
+   <path d="M96 25 c-5 -1 -9 -5 -8 -10 c1 -4 6 -6 9 -3.5 c2.5 2 1.5 6 -1.5 6 c-2 0 -2.6 -2 -1.6 -3"/>
+   <path d="M124 25 c5 -1 9 -5 8 -10 c-1 -4 -6 -6 -9 -3.5 c-2.5 2 -1.5 6 1.5 6 c2 0 2.6 -2 1.6 -3"/>
+   <path d="M76 17 l5 -5 l5 5 l-5 5 z M139 17 l5 -5 l5 5 l-5 5 z" opacity=".8"/>
+  </g></symbol>
+  <symbol id="i-lozenge" viewBox="0 0 220 34"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+   <path d="M2 17 l9 -9 l9 9 l-9 9 z M20 17 l9 -9 l9 9 l-9 9 z M38 17 l9 -9 l9 9 l-9 9 z M56 17 l9 -9 l9 9 l-9 9 z M74 17 l9 -9 l9 9 l-9 9 z M92 17 l9 -9 l9 9 l-9 9 z M110 17 l9 -9 l9 9 l-9 9 z M128 17 l9 -9 l9 9 l-9 9 z M146 17 l9 -9 l9 9 l-9 9 z M164 17 l9 -9 l9 9 l-9 9 z M182 17 l9 -9 l9 9 l-9 9 z M200 17 l9 -9 l9 9 l-9 9 z"/>
+   <path d="M11 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z M47 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z M83 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z M119 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z M155 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z M191 12.5 l4.5 4.5 l-4.5 4.5 l-4.5 -4.5 z" opacity=".55"/>
+  </g></symbol>
+  <symbol id="i-spiral" viewBox="0 0 220 34"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+   <path d="M4 17 H86 M134 17 H216"/>
+   <path d="M110 17 c1.5 0 2.2 -1.6 1.4 -2.6 c-1.4 -1.8 -4.6 -.6 -4.6 1.8 c0 3.4 4.4 4.8 7 2.4 c3.4 -3.2 1.2 -9 -3.8 -9.2 c-6.4 -.2 -9.6 6.6 -7 11.4 c3 5.6 11.6 6 15.4 .8 c4.6 -6.2 .8 -15.8 -7 -16.6"/>
+  </g></symbol>
+ </defs>
+</svg>
+
+<header class="hero" id="top">
+  <canvas id="heroSky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <nav class="topline" aria-label="Site">
+      <a class="brandlink" href="./"><svg class="mark" aria-hidden="true"><use href="#i-realt" stroke-width="2.4"/></svg><span class="brand" data-cfg="name">PA Réalt</span></a>
+      <a class="toplink" href="#explore">Map</a>
+      <a class="toplink opt" href="#newgrange">Newgrange</a>
+      <a class="toplink" href="#sky">Sky</a>
+      <a class="toplink" href="#claims">Evidence</a>
+      <a class="toplink opt" href="#tests">Tests</a>
+      <button class="iconbtn" id="themeBtn" aria-label="Toggle night / dawn" title="Oíche / breacadh · night / dawn">◐</button>
+    </nav>
+    <div class="headline">
+      <svg class="emblem" role="img" aria-label="A passage-tomb mound with its roof-box catching a ray from the rising Sun, under a star"><use href="#i-realt" stroke-width="1.8"/></svg>
+      <div>
+        <p class="eyebrow"><i lang="ga">Fáilte</i> · Welcome</p>
+        <h1><span data-cfg="name">PA Réalt</span><span class="dot">·</span><small data-cfg="subtitle">Stone and Sky</small></h1>
+        <p class="sub"><span data-cfg="tagline">Ireland’s Neolithic and Bronze Age monuments, and the sky they face.</span> <i lang="ga" class="ga" style="display:inline;font-size:15px" data-cfg="subtitleGa">Cloch agus spéir</i></p>
+      </div>
+    </div>
+  </div>
+  <svg class="skyline" id="skyline" viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true"></svg>
+  <span class="skyline-note">This skyline is the real horizon seen from Newgrange, from east to south-west (Copernicus 30 m DSM, height ×25). The gold ticks mark the winter-solstice sunrise and the equinox sunrise.</span>
+</header>
+
+<section class="mapzone" id="explore" aria-label="Interactive map">
+  <div class="wrap">
+    <div class="mapbar">
+      <span><i lang="ga">An léarscáil</i> · The map <small>Monuments: NMS SMR (CC BY 4.0) and NI SMR (OGL). Rays are computed, not surveyed.</small></span>
+      <span class="ctrls">
+        <input class="search" id="q" type="search" placeholder="Townland, SMR no. or county" aria-label="Search monuments">
+        <span class="seg" role="group" aria-label="Sky epoch"><button id="eraOld" aria-pressed="true" title="Earth’s tilt c. 3200 BC (24.04°)">3200 BC</button><button id="eraNow" aria-pressed="false" title="Earth’s tilt today (23.44°)">Today</button></span>
+      </span>
+    </div>
+    <div class="mapgrid">
+      <div id="map-canvas" style="position:relative"><div id="map"></div></div>
+      <aside class="side" aria-label="Filters and site card">
+        <div class="filters">
+          <h3><span class="ga" lang="ga">Cineálacha</span>Monument types</h3>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div class="card-site" id="card" aria-live="polite">
+          <p class="empty"><b>Tap a monument</b> to see its card: the Irish and English townland names, its class, a link to the official record, and rays for the solstices, the equinoxes and the Moon’s standstills.<br><br>The gold stars mark featured sites with a claimed alignment. Try <b>Newgrange</b>.</p>
+        </div>
+      </aside>
+    </div>
+    <a class="btn primary wide" href="#newgrange"><span class="bt">Watch the light enter Newgrange →</span><span class="ga" lang="ga">Solas sa seomra</span></a>
+    <p class="by">By <span data-cfg="author">Garry Lohan</span> (<span data-cfg="affiliation">ATU Galway</span>) · <i lang="ga">Ag faire ar an spéir</i> (Watching the sky)</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <svg class="motif" id="m1" role="img" aria-label="Spiral motif (original line art)"><use href="#i-spiral3"/><title>Original line art inspired by passage-tomb motifs. At Newgrange, stone C10 is a “three-spiral stone, often wrongly called a triple spiral” (NMS 2024, n. 12).</title></svg>
+
+  <section id="newgrange" class="reveal" aria-labelledby="ngH">
+    <h2 class="sect" id="ngH"><span class="ga" lang="ga">Solas sa seomra · grianstad an gheimhridh</span>Light in the chamber: Newgrange at the winter solstice</h2>
+    <p class="lead">Pick a morning and drag the time slider. The Sun’s position is computed for Newgrange. The <b>gold window</b> is the zone of sky from which direct sunlight was actually photographed in the chamber in 2020–21: the 53 positions measured in the NMS 2024 research report, shown as dots. When the Sun is inside that window, the beam lights the chamber.</p>
+    <div class="grid2">
+      <div class="panel">
+        <canvas id="ngChart" aria-label="Sun path against the Newgrange horizon and the measured roof-box window"></canvas>
+        <div class="ctrlrow">
+          <label>Morning <input type="range" id="ngDay" min="-30" max="30" value="0" step="1"></label>
+          <span class="readout" id="ngDayOut"></span>
+        </div>
+        <div class="ctrlrow">
+          <label>Time (GMT) <input type="range" id="ngTime" min="520" max="590" value="538" step="0.25"></label>
+          <button class="pill" id="ngPlay">▶ Play dawn</button>
+          <button class="pill" id="ngEra" title="Earth’s tilt c. 3200 BC">Neolithic tilt</button>
+        </div>
+        <p class="readout" id="ngOut"></p>
+      </div>
+      <div class="panel">
+        <svg class="ngsec" id="ngSec" viewBox="0 0 520 260" role="img" aria-label="Schematic section of the Newgrange passage, roof-box and chamber"></svg>
+        <p class="note">Schematic, not to scale in height. The passage is about 19 m long and the chamber floor sits about 2 m above the entrance, so the light comes in through the roof-box above the door, not through the doorway (O’Kelly 1982; NMS 2024). O’Kelly saw the beam on 21 Dec 1969 from <b>8.58</b> to <b>9.15 GMT</b>, 17 minutes in all. The “Neolithic tilt” button uses the Earth’s larger tilt c. 3200 BC, when the solstice Sun rose further south; Ray (1989) showed that the beam then reached the back of the chamber.</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="motif" aria-hidden="true"><use href="#i-lozenge"/></svg>
+
+  <section id="sky" class="reveal" aria-labelledby="skyH">
+    <h2 class="sect" id="skyH"><span class="ga" lang="ga">Spéir na hoíche · an spéir inniu</span>The sky over Brú na Bóinne</h2>
+    <p class="lead">This is the real sky above Newgrange: 2,309 catalogue stars down to magnitude 5.3, with the Sun, Moon and planets computed for the chosen moment. The rim of the dome is the true local horizon, and the gold ticks show where the Sun rises and sets at the solstices and equinoxes.</p>
+    <div class="dome-wrap">
+      <div>
+        <canvas id="dome" aria-label="Sky dome over Brú na Bóinne"></canvas>
+        <div class="ctrlrow" style="justify-content:center">
+          <label>Hours from now <input type="range" id="domeT" min="-24" max="48" value="0" step="0.1"></label>
+        </div>
+        <div class="ctrlrow" style="justify-content:center">
+          <button class="pill on" id="domeNow">Anois · Now</button>
+          <button class="pill" id="domeTonight">Tonight 23:00</button>
+          <button class="pill" id="domeWS">Solstice dawn</button>
+          <button class="pill" id="domeLines">Constellation lines</button>
+        </div>
+        <p class="readout" id="domeOut" style="text-align:center"></p>
+      </div>
+      <div class="panel">
+        <h3 style="margin:0 0 8px;font:600 20px var(--serif)"><span class="ga" lang="ga">An spéir inniu</span>Today’s sky over Brú na Bóinne</h3>
+        <ul class="today" id="today"></ul>
+        <p class="note" style="margin-top:10px">Computed in your browser with Astronomy Engine (MIT), for Newgrange (53.695° N, 6.476° W). Times are Irish time. Rise and set times assume a flat horizon.</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="motif" aria-hidden="true"><use href="#i-spiral"/></svg>
+
+  <section id="claims" class="reveal" aria-labelledby="clH">
+    <h2 class="sect" id="clH"><span class="ga" lang="ga">Éileamh agus fianaise</span>Claims vs evidence</h2>
+    <p class="lead">Some alignments are measured, repeatable and probably intended. Others are beautiful coincidences, or claims that fell apart when surveyed. Each card gives the claim, what was measured and our reading of it, with links to the sources.</p>
+    <div class="legend-v"><span class="verdict v-strong">Strong</span> measured, repeatable, widely accepted <span class="verdict v-obs">Observed</span> the light effect is real; intent unproven <span class="verdict v-deb">Debated</span> <span class="verdict v-prop">Proposed</span> single-site claim, untested <span class="verdict v-no">Not supported</span> the survey or the statistics do not support it</div>
+    <div class="claims" id="claimCards"></div>
+    <h3 class="sect" style="font-size:24px;margin-top:34px"><span class="ga" lang="ga">Grúpaí</span>Whole classes of monument</h3>
+    <div class="claims" id="groupCards"></div>
+  </section>
+
+  <svg class="motif" aria-hidden="true"><use href="#i-lozenge"/></svg>
+
+  <section id="tests" class="reveal" aria-labelledby="tH">
+    <h2 class="sect" id="tH"><span class="ga" lang="ga">Tástálacha</span>Pre-registered tests</h2>
+    <p class="lead">Following the PA Marine approach, each test is written down, with its data, null model and pass rule, <b>before</b> anything is scored. No results have been scored yet. The full protocol is in <a id="lnkResearch" href="#">RESEARCH.md</a> and <a id="lnkPrereg" href="#">prereg/tests_v1.json</a>.</p>
+    <ol class="tests">
+      <li><b>Wedge-tomb orientation (south-west / setting Sun?)</b><p>The 309 wedge tombs whose SMR descriptions give a compass orientation, against a von Mises null and a random-rotation Monte Carlo (10,000 draws), testing whether they cluster within ±11.25° of the winter-solstice sunset azimuth at each site.</p></li>
+      <li><b>Passage tombs facing solstice declinations</b><p>The 43 SMR passage-tomb descriptions with compass orientations, plus any surveyed axes made available (Prendergast’s 136 are not published as a table), are converted to declinations using DSM horizons and tested for peaks at ±ε, 0° and ±(ε ± i) against random azimuths. The NMS 2024 result (global p = 0.896, no clustering) is the benchmark.</p></li>
+      <li><b>Stone rows and the lunar standstills</b><p>The 136 stone rows with recorded orientations, tested for clustering at the major and minor standstill declinations with the hill-target confound modelled. This is a replication of Ruggles (1994/96) on independent SMR data.</p></li>
+      <li><b>Intervisibility vs chance</b><p>Do passage tombs point at higher tombs more often than random siting predicts? This uses DSM viewsheds and a null that places the same number of tombs randomly on comparable terrain.</p></li>
+      <li><b>Horizon targets</b><p>Are stone-pair and stone-row axes aimed at local horizon maxima (peaks) more often than random azimuths are, given each site’s DSM profile?</p></li>
+    </ol>
+  </section>
+
+  <section id="sources" class="reveal" aria-labelledby="sH">
+    <h2 class="sect" id="sH"><span class="ga" lang="ga">Foinsí agus ceadúnais</span>Data, sources &amp; licences</h2>
+    <ul class="src-list" id="srcList"></ul>
+  </section>
+
+  <section class="credit" id="about">
+    <h2><span class="ga" lang="ga">Fúinn</span>About</h2>
+    <p><span data-cfg="name">PA Réalt</span> is a project by <strong data-cfg="author">Garry Lohan</strong> (mechanical engineer and lecturer, <span data-cfg="affiliation">ATU Galway</span>), about Irish monuments, astronomy and the Irish language. It is a sister site of PA Marine.</p>
+    <p class="small">This is an independent research prototype, not an official National Monuments Service, OPW or Heritage Council product. Many sites are on private land: check access and respect the monuments. Rays use a flat horizon except at the featured sites, which use a 30 m surface model, so they are indicative only.</p>
+  </section>
+
+  <nav class="pa-family" aria-label="The PA family of sites" id="paFamily"></nav>
+</main>
+
+<footer class="foot">
+  <p class="seanfhocal-f"><span lang="ga">Is maith an scéalaí an aimsir.</span> <span class="tr">Time is a good storyteller. (Seanfhocal)</span></p>
+  <i lang="ga">Déanta i nGaillimh</i> · Made in Galway<br>
+  © 2026 <span data-cfg="author">Garry Lohan</span> · Data © National Monuments Service, DfC Historic Environment Division (OGL), Tailte Éireann, Copernicus, © OpenStreetMap contributors · <span title="Hidden gem">Press <kbd>G</kbd> for <i lang="ga">grian</i></span>
+</footer>
+<div class="disclaimer" role="note">Research prototype by Garry Lohan (ATU Galway). Alignments are computed, not field-surveyed. Not an official National Monuments Service product.</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="vendor/leaflet/leaflet.js" defer></script>
+<script src="vendor/astronomy/astronomy.browser.min.js" defer></script>
+<script src="js/featured.js" defer></script>
+<script src="js/astro.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

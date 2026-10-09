@@ -1,0 +1,3751 @@
+{
+ "ni_counts": {
+  "ss": 448,
+  "mu": 129,
+  "sp": 34,
+  "wt": 51,
+  "ct": 102,
+  "sc": 33,
+  "po": 41,
+  "sr": 9,
+  "pt": 15,
+  "he": 7
+ },
+ "n_records": 151308,
+ "n_classes": 470,
+ "top20": {
+  "Ringfort - rath": 26000,
+  "Enclosure": 16621,
+  "Fulacht fia": 6637,
+  "Hut site": 4891,
+  "Church": 4882,
+  "Souterrain": 4853,
+  "Standing stone": 4100,
+  "Ringfort - cashel": 3551,
+  "Graveyard": 3446,
+  "Ritual site - holy well": 3032,
+  "Castle - unclassified": 2466,
+  "Earthwork": 2009,
+  "Cross-slab": 1935,
+  "Ringfort - unclassified": 1880,
+  "House - indeterminate date": 1874,
+  "Structure - peatland": 1746,
+  "Barrow - ring-barrow": 1554,
+  "Children's burial ground": 1486,
+  "Ring-ditch": 1483,
+  "Burial ground": 1479
+ },
+ "prehistoric_ritual_funerary_classes": {
+  "Standing stone": 4100,
+  "Barrow - ring-barrow": 1554,
+  "Cairn - unclassified": 1291,
+  "Barrow - unclassified": 928,
+  "Rock art": 791,
+  "Barrow - ditch barrow": 741,
+  "Megalithic tomb - wedge tomb": 525,
+  "Megalithic structure": 443,
+  "Megalithic tomb - unclassified": 432,
+  "Barrow - mound barrow": 353,
+  "Megalithic tomb - court tomb": 305,
+  "Standing stone - pair": 248,
+  "Megalithic tomb - passage tomb": 204,
+  "Stone row": 202,
+  "Barrow - bowl-barrow": 156,
+  "Megalithic tomb - portal tomb": 150,
+  "Boulder-burial": 141,
+  "Stone circle": 133,
+  "Cairn - boundary cairn": 117,
+  "Cupmarked stone": 92,
+  "Cairn - clearance cairn": 90,
+  "Cairn - burial cairn": 82,
+  "Standing stone (present location)": 68,
+  "Barrow - stepped barrow": 66,
+  "Rock art (present location)": 63,
+  "Barrow - embanked barrow": 61,
+  "Stone circle - multiple-stone": 57,
+  "Stone circle - five-stone": 56,
+  "Barrow - pond barrow": 42,
+  "Cairn - wayside cairn": 34,
+  "Cairn - ring-cairn": 34,
+  "Henge": 22,
+  "Cairn - radial-stone cairn": 20,
+  "Cursus": 14,
+  "Passage tomb art": 13,
+  "Cairnfield": 10,
+  "Stone circle - embanked": 9,
+  "Cairn - cairn circle": 8,
+  "Cupmarked stone (present location)": 5,
+  "Passage tomb art (present location)": 3,
+  "Megalithic structure (present location)": 2,
+  "Megalithic tomb - wedge tomb (present location)": 1
+ },
+ "site_groups": {
+  "pt": 216,
+  "ct": 406,
+  "po": 191,
+  "wt": 573,
+  "mu": 468,
+  "sc": 255,
+  "sr": 197,
+  "sp": 271,
+  "he": 29,
+  "cu": 14,
+  "bb": 138,
+  "ss": 4120
+ },
+ "by_county_core": [
+  [
+   "CORK",
+   512
+  ],
+  [
+   "NORTHERN IRELAND",
+   421
+  ],
+  [
+   "MAYO",
+   245
+  ],
+  [
+   "SLIGO",
+   240
+  ],
+  [
+   "DONEGAL",
+   233
+  ],
+  [
+   "CLARE",
+   202
+  ],
+  [
+   "KERRY",
+   190
+  ],
+  [
+   "GALWAY",
+   105
+  ],
+  [
+   "MEATH",
+   83
+  ],
+  [
+   "LEITRIM",
+   76
+  ],
+  [
+   "CAVAN",
+   64
+  ],
+  [
+   "MONAGHAN",
+   49
+  ],
+  [
+   "DUBLIN",
+   40
+  ],
+  [
+   "TIPPERARY NORTH",
+   40
+  ],
+  [
+   "LIMERICK",
+   39
+  ],
+  [
+   "WATERFORD",
+   35
+  ],
+  [
+   "KILKENNY",
+   34
+  ],
+  [
+   "LOUTH",
+   31
+  ],
+  [
+   "WICKLOW",
+   29
+  ],
+  [
+   "ROSCOMMON",
+   26
+  ],
+  [
+   "TIPPERARY SOUTH",
+   15
+  ],
+  [
+   "LONGFORD",
+   12
+  ],
+  [
+   "WEXFORD",
+   12
+  ],
+  [
+   "CARLOW",
+   10
+  ],
+  [
+   "WESTMEATH",
+   5
+  ],
+  [
+   "KILDARE",
+   4
+  ],
+  [
+   "LAOIS",
+   3
+  ],
+  [
+   "OFFALY",
+   3
+  ]
+ ],
+ "irish_name_matched": 4694,
+ "irish_name_ambiguous": 331,
+ "irish_name_point_matched": 1172,
+ "n_mapped": 6878,
+ "dropped_bbox": [
+  {
+   "SMRS": "CL006-069----",
+   "MONUMENT_CLASS": "Megalithic tomb - wedge tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL006-072----",
+   "MONUMENT_CLASS": "Megalithic tomb - wedge tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL018-027002-",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL033-202----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL034-181----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL035-008----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL035-136----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL035-172----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL036-042----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL043-117----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL055-016----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL056-044003-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CL065-117----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-042----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-043----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-045----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-046----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-047----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-049----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO004-052----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO006-111----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO006-113----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO006-119----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO006-123----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO013-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO013-045----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO013-046----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO013-047----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-106----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-107----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-117----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-124----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-127----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-128----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-132----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-133----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-134----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO014-148----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-104----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-105----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-125----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-133----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-134----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-138----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-140----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-152----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-153----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO015-177----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO016-229----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO016-233----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO016-234----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO016-235----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO016-242----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO017-114----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-079----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-080----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-082----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-084----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-085----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-086----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-093----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-094----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-095----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-098----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-099----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-103----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-110----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-118----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-123----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-128----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-133----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-140----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-141----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-142----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-156----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO021-167----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-179----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-198----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-199----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-200----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-232----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-244----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-245----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-248----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-249----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-251----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-258----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-265----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO022-273----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-183----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-184----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-185----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-188----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-189----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-203----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-206----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-213----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-214----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-216----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-224----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-226----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-227----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-253----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-266----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO023-318----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-177----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-178----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-181----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-186----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-188----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-189----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-190----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-191----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO024-228----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO027-128----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-094----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-101----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-107----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-108----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-109----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-114----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-115----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-116----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-128----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-131----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-132----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-134----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-135----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-136----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-141----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-142----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-143----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-149----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-152----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-153----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-154----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-155----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-159----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-166----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-167----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-172----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-173----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-176----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-199----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-200----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO029-201----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-156----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-167----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-168----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-169----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-176----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-178----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-181----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-209----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-222----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO030-232----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-075----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-076----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-081----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-082----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-092----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-093----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-098----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-099----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-110----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-116----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-124----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO031-144----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-125----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-139----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-161----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-167----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-173----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-174----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-185----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-186----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-189----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-190----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-211----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-234----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO032-240----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO036-039----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO036-047----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-074----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-075----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-090----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-100----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-110----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO038-161----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-150----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-176----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-227----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-230----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-233----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO039-234----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-096----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-097----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-107----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-108----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-110----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-111----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-113----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-123----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-130----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO040-143----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-123----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-124----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-126----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-133----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-136----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-142----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-144----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-147----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-151----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-152----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-155----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-165----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO041-166----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO042-085----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO042-104----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO042-105----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-113----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-114----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-124----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-125----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-131----",
+   "MONUMENT_CLASS": "Boulder-burial",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO048-171----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO050-153----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO050-157----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO050-158----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO053-071----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO057-015----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO058-065----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-159----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-160----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-161----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-163----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-164----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO059-190----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO062-203----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO064-141----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO067-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO069-077----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO069-078----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO071-117----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO071-118----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO075-059----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO076-088----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO077-080----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO083-149----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO086-070----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO086-071----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO087-096----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO087-098----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO088-065----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO088-066----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO088-082----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO088-109----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO090-009----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO092-056----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO099-067----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO099-081----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO099-097----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO099-106----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO100-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO109-067----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO110-080----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO114-092----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO120-063----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO120-065----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO123-082----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO125-030----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO127-067----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO128-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO128-055----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO131-065----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO131-067----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO132-076----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO138-032----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO138-033----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CO151-048----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CV025-130----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CW009-015----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CW009-016----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CW019-077----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "CW024-035----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG006-005----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG011-063----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG012-046----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG015-030----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG015-037----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG015-038----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG016-028----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG024-018----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG025-050----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG025-051----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG027-001----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG027-002----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG027-058----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG029-049----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG033-003----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG033-004----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG034-004----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG034-005----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG036-034----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG036-036----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG038-051----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG040-006----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG053-051----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG057-001----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG060-014----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG064-021----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG073-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG073-045----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG077-031----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG077-034----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG089-021----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG091-004----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG097-036----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG100-016----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG106-015----",
+   "MONUMENT_CLASS": "Megalithic tomb - passage tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DG106-016----",
+   "MONUMENT_CLASS": "Megalithic tomb - court tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU018-081----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU021-063----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU021-067----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU021-080----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU023-023009-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU023-038----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU024-049----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU024-050001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU025-060----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "DU025-079----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA010-050----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA022-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA026-017----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA035-053----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA052-004----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA073-162----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA103-208----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA104-275----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA104-279----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA110-153----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA120-013----",
+   "MONUMENT_CLASS": "Megalithic tomb - wedge tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "GA129-042----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KD024-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE013-028002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE013-030----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE013-032----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE015-133----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE016-080----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE017-023----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE019-003----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE019-004----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE020-073003-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE021-139----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE028-093----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE028-098002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE028-104----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE029-196002-",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE029-221----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE032-019001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE035-080----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE036-086----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE037-056----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE038-167----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE041-001----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE047-090----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE050-011----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE052-293----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE053-087----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE057-095----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE068-062----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE068-164----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE069-017----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE070-075----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE076-072----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE080-052007-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE082-019001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE082-055----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE091-096----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-047----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-047001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-047002-",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-049----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-049001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-050----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-053----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE097-065----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE098-030003-",
+   "MONUMENT_CLASS": "Boulder-burial",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE098-030004-",
+   "MONUMENT_CLASS": "Boulder-burial",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE098-090001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE100-034----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE100-048----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE102-055----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE106-085----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE106-098----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE108-026----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE108-028----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE108-037----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KE108-039----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK006-013----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK019-066----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK028-086005-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK030-034----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK031-061----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK034-051----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK035-069----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK035-079----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK035-081001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK035-081003-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK036-052----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK037-032----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "KK039-047----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA003-012002-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA008-028----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA009-033----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA010-010----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA011-015003-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA012-009----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA013-103----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA014-055----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA015-028----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA018-043----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA019-040----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA019-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA021-043----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA021-044----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA022-045----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA022-048----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA022-061----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA023-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA024-062----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA024-068----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA024-072----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA024-077----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA024-088----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-038----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-040----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-048----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-049----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-050----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-057----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA025-060----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA027-035----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA030-034----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA031-013----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA031-017----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA033-027001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LA033-027002-",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LE011-108----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LE035-032----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LF014-127001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LH007-117----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LH011-104----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI013-182----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI019-244----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI022-180----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI032-165002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI032-165003-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI033-058----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "LI040-176----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA004-018----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA007-061----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA007-065002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA009-023001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA010-031----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA011-019----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA016-014002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA021-078----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA022-094----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA034-005----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA040-095----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA040-098----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA042-032002-",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA057-002----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA057-004----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA061-210----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA061-216----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA065-023----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA086-011----",
+   "MONUMENT_CLASS": "Stone row",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA087-049----",
+   "MONUMENT_CLASS": "Megalithic tomb - passage tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA090-120----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA095-012----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA096-033----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA103-050----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA118-122----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA118-125----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA120-055----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA120-063----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MA120-068----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "ME019-057----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MO012-089----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MO017-072----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MO024-041----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MO031-114----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "MO031-115----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF007-053001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF008-059----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF011-050----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF016-015008-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF016-043----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF036-071----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF042-044----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "OF043-071----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "RO045-207----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL010-028----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL011-108----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL014-249----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL014-252001-",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL014-253----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL017-060----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL019-185----",
+   "MONUMENT_CLASS": "Megalithic tomb - passage tomb",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL025-148----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL032-207----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL032-208----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL032-212----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL038-126----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL038-131----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL038-134----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL040-196----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL044-082----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "SL045-012----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TN026-084----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TN027-157----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TN033-033----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TN039-034----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS071-046----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS075-068----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS076-050002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS076-063----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS077-109----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS078-065----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS079-033----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS088-054----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "TS091-002002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA002-055----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA003-079----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA003-088002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA003-103----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA004-009----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA005-041----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA006-044002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA011-005----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA016-074----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA016-079----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA016-085----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA016-086----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA019-004----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA021-041----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA024-081001-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA024-081002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA024-082----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA025-095002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA030-059----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA030-065----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA030-068----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA031-059----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA033-024----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA033-034----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA034-043----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA034-068----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA035-018002-",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA035-019----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA035-029----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WA038-051----",
+   "MONUMENT_CLASS": "Standing stone - pair",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI003-033----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI008-024----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI012-041----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI012-042----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI019-030----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI025-079----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI027-009----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI028-023----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI031-034----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI033-022----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI040-040----",
+   "MONUMENT_CLASS": "Megalithic tomb - unclassified",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI042-008----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI042-046----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WI045-013----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WM038-058----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX026-046----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX031-042----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX035-072----",
+   "MONUMENT_CLASS": "Stone circle",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX046-055----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX053-040----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX053-062----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  },
+  {
+   "SMRS": "WX053-065----",
+   "MONUMENT_CLASS": "Standing stone",
+   "LATITUDE": 46.48818131517371,
+   "LONGITUDE": -15.817314261831434
+  }
+ ],
+ "national_itm_zero": 10879
+}

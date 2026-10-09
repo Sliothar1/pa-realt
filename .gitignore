@@ -1,0 +1,7 @@
+.venv/
+data/raw/
+data/dem/
+data/pip.log
+__pycache__/
+*.pyc
+/tmp/
