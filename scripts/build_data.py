@@ -14,14 +14,14 @@ GROUPS = collections.OrderedDict([
  ('ct', ('Court tombs', 'Tuamaí cúirte', 'fingal', ['Megalithic tomb - court tomb'])),
  ('po', ('Portal tombs', 'Tuamaí ursanacha', 'fingal', ['Megalithic tomb - portal tomb'])),
  ('wt', ('Wedge tombs', 'Tuamaí dinge', 'fingal', ['Megalithic tomb - wedge tomb'])),
- ('mu', ('Megalithic tombs (unclassified)', 'Tuamaí meigiliotacha', 'fingal', ['Megalithic tomb - unclassified'])),
- ('sc', ('Stone circles', 'Ciorcail chloiche', 'fingal', ['Stone circle', 'Stone circle - multiple-stone', 'Stone circle - five-stone', 'Stone circle - embanked'])),
- ('sr', ('Stone rows', 'Sraitheanna cloch', 'fingal', ['Stone row'])),
+ ('mu', ('Megalithic tombs (unclassified)', 'Tuamaí meigiliteacha', 'nms_scope', ['Megalithic tomb - unclassified'])),
+ ('sc', ('Stone circles', 'Liagchiorcail', 'nms_scope', ['Stone circle', 'Stone circle - multiple-stone', 'Stone circle - five-stone', 'Stone circle - embanked'])),
+ ('sr', ('Stone rows', 'Sraitheanna gallán', 'nms_scope', ['Stone row'])),
  ('sp', ('Standing stones (pair)', 'Péirí cloch', 'fingal', ['Standing stone - pair'])),
- ('he', ('Henges', 'Heinse', 'focloir', ['Henge'])),
+ ('he', ('Henges', 'Heinsí', 'nms_scope', ['Henge'])),
  ('cu', ('Cursus monuments', None, None, ['Cursus'])),
  ('bb', ('Boulder-burials', None, None, ['Boulder-burial'])),
- ('ss', ('Standing stones', 'Clocha seasta', 'fingal', ['Standing stone'])),
+ ('ss', ('Standing stones', 'Galláin', 'nms_scope', ['Standing stone'])),
 ])
 CLS2G = {c: g for g, v in GROUPS.items() for c in v[3]}
 

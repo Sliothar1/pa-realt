@@ -5,6 +5,8 @@ cd "$(dirname "$0")/.."; mkdir -p data/raw data/dem
 # NMS SMR open data (CC BY 4.0)
 curl -L -o data/raw/SMROpenData_20251201.csv "https://heritagedata.maps.arcgis.com/sharing/rest/content/items/63841b2807504a24942e44955119c339/data"
 # Northern Ireland SMR (OGL v3), via data.gov.uk / OpenDataNI
+curl -L -A "Mozilla/5.0" -o data/raw/scope_notes.pdf "https://www.archaeology.ie/app/uploads/2025/03/monument-class-and-scope-notes-v1-1.pdf" && pdftotext -raw data/raw/scope_notes.pdf data/raw/scope_raw.txt
+mkdir -p data/raw/msc; for c in carlow cavan clare cork donegal dublin galway kerry kildare kilkenny laois leitrim limerick longford louth mayo meath monaghan offaly roscommon sligo tipperary-north tipperary-south waterford westmeath wexford wicklow; do curl -sfL -A "Mozilla/5.0" -o data/raw/msc/$c.pdf "https://www.archaeology.ie/app/uploads/2025/03/monuments-in-state-care-$c.pdf" && pdftotext -layout data/raw/msc/$c.pdf; done
 curl -L -A "Mozilla/5.0" -o data/raw/nismr.geojson "https://admin.opendatani.gov.uk/dataset/46240fa5-db15-469e-b1c8-0460504b951c/resource/a2af36e6-d3f0-4abc-9314-b1b72d5a9e06/download/nismr_10092026.geojson"
 # d3-celestial star/constellation data (BSD-3)
 for f in stars.6.json constellations.lines.json constellations.json starnames.json; do

@@ -118,12 +118,14 @@ function renderCard(s){
   let h='';
   if(f){h+=`<p class="sc-ga" lang="ga">${esc(f.ga||'')}</p><p class="sc-en">${esc(f.en)}</p><p class="note" style="margin:-4px 0 6px">${esc(f.place)}${f.gaNote?' · '+esc(f.gaNote):''}</p>`;}
   else{h+=s[5]?`<p class="sc-ga" lang="ga">${esc(s[5])}</p>`:'';h+=`<p class="sc-en">${esc(clean(s[4]))}</p>`;}
-  h+=`<span class="sc-cls">${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${G.ga?` · <em lang="ga">${esc(G.ga)}</em>`:''}</span>`;
+  const GA1={pt:'Tuama pasáiste',ct:'Tuama cúirte',po:'Tuama ursanach',wt:'Tuama dingeach',mu:'Tuama meigiliteach, neamhaicmithe',sc:'Liagchiorcal',sr:'Sraith gallán',sp:'Gallán, péire',he:'Heinse',cu:'Cursas',bb:'Adhlacadh bolláin',ss:'Gallán'}[s[1]];
+  h+=`<span class="sc-cls" title="Irish class term: NMS Monument Class and Scope Notes">${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${GA1?` · <em lang="ga">${esc(GA1)}</em>`:''}</span>`;
   h+=`<dl class="kv"><dt>County</dt><dd>${esc(cty.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase()))}${ctyGa?` · <i lang="ga">${esc(ctyGa)}</i>`:''}</dd><dt>SMR no.</dt><dd>${f&&f.key==='carrowmore'?'SL014-209 (cemetery)':s[0].startsWith('NI:')?`${esc(s[0].slice(3))} · <a href="${META.ni_url}" target="_blank" rel="noopener">NI SMR (OGL) ↗</a>`:`<a href="${link}" target="_blank" rel="noopener">${esc(s[0])} ↗</a>`}</dd>${s[7]?`<dt>ITM</dt><dd>${s[7]} E, ${s[8]} N</dd>`:''}</dl>`;
   if(f){const v=VLAB[f.verdict];h+=`<p style="margin:6px 0"><span class="verdict ${v[0]}">${v[1]}</span></p><p style="font-size:14px;margin:4px 0"><b>Claim.</b> ${esc(f.claim)}</p><p style="font-size:14px;margin:4px 0"><b>Evidence.</b> ${esc(f.evidence)}</p><p class="note">${esc(f.caveat)}</p><p class="note">Sources: ${srcLinks(f.src)}</p><canvas class="hz" id="hzc"></canvas><p class="note">Local horizon (DSM, height ×6), with sunrise and sunset points (gold) and the Moon’s major standstills (lilac).</p>`;}
   h+=`<table class="rays"><tbody>${ev.filter(e=>e.az!=null).map(e=>`<tr class="${e.body}"><td>${esc(e.en)}${e.ga?`<div class="gl" lang="ga">${esc(e.ga)}</div>`:''}</td><td>${e.az.toFixed(1)}°</td></tr>`).join('')}</tbody></table>`;
   h+=`<p class="note">Azimuths from true north for ${era<0?'c. 3200 BC (tilt 24.04°)':'today (tilt 23.44°)'}, Sun’s centre with refraction, Moon with parallax. ${dem?'Horizon from the Copernicus 30 m surface model (it includes trees and buildings).':'This assumes a <b>flat horizon</b>; real hills shift these points.'}</p>`;
-  $('#card').innerHTML=h;$('#card').scrollTop=0;
+  h+=window.PAAsk?PAAsk.panel(s,f):'';
+  $('#card').innerHTML=h;$('#card').scrollTop=0;if(window.PAAsk)PAAsk.bind($('#card'),s,f,{META,HOR});
   if(f)drawHz(HOR[f.key],ev);
 }
 function drawHz(h,ev){
@@ -148,33 +150,33 @@ function startEgg(){
   const g=cv.getContext('2d');let W=0,H=0,dpr=Math.min(2,devicePixelRatio||1);
   const size=()=>{W=host.clientWidth;H=host.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';g.setTransform(dpr,0,0,dpr,0,0);};size();
   host.classList.add('egg-on');
-  const t0=performance.now(),LEN=sm?46:68,T_END=10000;
+  const t0=performance.now(),LEN=sm?46:68,T_END=16000;
   const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
   egg={cv,raf:0,timers:[],off:null};
   /* choreography */
   const box=document.getElementById('explore')||host;box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
   egg.timers.push(setTimeout(()=>{map.invalidateSize(false);map.flyTo([53.66,-6.62],sm?8.25:9,{duration:reduce?0:1.8});},reduce?0:550));
-  egg.timers.push(setTimeout(()=>toast('<span class="egg-toast"><i lang="ga">Grianstad an Gheimhridh</i> · Midwinter sunrise, 3200 BC</span>',4200),1200));
-  egg.timers.push(setTimeout(()=>{map.flyToBounds(IRL,{padding:[sm?12:24,sm?12:24],duration:reduce?0:2.2});},reduce?0:4600));
-  egg.timers.push(setTimeout(()=>toast(`${tombs.length} passage tombs, each with its own midwinter sunrise line (flat horizon). Only a few of them actually face it, as the claims section shows. <span style="opacity:.7">Tap the map to clear.</span>`,3600),6900));
+  egg.timers.push(setTimeout(()=>toast('<span class="egg-toast"><i lang="ga">Grianstad an Gheimhridh</i> · Midwinter sunrise, 3200 BC</span>',6500),1200));
+  egg.timers.push(setTimeout(()=>{map.flyToBounds(IRL,{padding:[sm?12:24,sm?12:24],duration:reduce?0:2.6});},reduce?0:7000));
+  egg.timers.push(setTimeout(()=>toast(`${tombs.length} passage tombs, each with its own midwinter sunrise line (flat horizon). Only a few of them actually face it, as the claims section shows. <span style="opacity:.7">Tap anywhere to clear.</span>`,7000),8000));
   egg.timers.push(setTimeout(()=>stopEgg(),T_END));
-  const tap=()=>{if(performance.now()-t0>700)stopEgg();};egg.off=()=>{host.removeEventListener('pointerdown',tap);document.removeEventListener('keydown',esc_);};
-  const esc_=e=>{if(e.key==='Escape')stopEgg();};host.addEventListener('pointerdown',tap);document.addEventListener('keydown',esc_);
+  const tap=()=>{if(performance.now()-t0>700){stopEgg();$('#toast').classList.remove('show');}};egg.off=()=>{document.removeEventListener('pointerdown',tap,true);document.removeEventListener('keydown',esc_);};
+  const esc_=e=>{if(e.key==='Escape'){stopEgg();$('#toast').classList.remove('show');}};document.addEventListener('pointerdown',tap,true);document.addEventListener('keydown',esc_);
   const frame=now=>{
-    const t=reduce?8000:now-t0;if(host.clientWidth!==W||host.clientHeight!==H)size();
+    const t=reduce?12000:now-t0;if(host.clientWidth!==W||host.clientHeight!==H)size();
     g.clearRect(0,0,W,H);
     const fade=egg.fading?Math.max(0,1-(now-egg.fading)/800):Math.min(1,t/500);
     /* warm wash + dawn glow sweeping from the south-east (where the midwinter Sun rises) towards the north-west */
     g.globalAlpha=fade;
     g.fillStyle=`rgba(40,10,18,${.28*fade})`;g.fillRect(0,0,W,H);
-    const sw=Math.min(1.4,Math.max(-.4,(t-500)/3200*1.8-.4));
+    const sw=Math.min(1.4,Math.max(-.4,(t-500)/5200*1.8-.4));
     const x0=W*1.05,y0=H*1.05,x1=-W*.05,y1=-H*.05,px=x0+(x1-x0)*sw,py=y0+(y1-y0)*sw,R=Math.hypot(W,H)*.55;
     let gr=g.createRadialGradient(px,py,0,px,py,R);gr.addColorStop(0,'rgba(255,200,120,.30)');gr.addColorStop(.45,'rgba(243,170,90,.12)');gr.addColorStop(1,'rgba(243,170,90,0)');
     g.globalCompositeOperation='lighter';g.fillStyle=gr;g.fillRect(0,0,W,H);
     /* rays */
     g.lineCap='round';
     for(const r of tombs){
-      const st=1700+(r.d/maxD)*3800,p=ease((t-st)/1100);if(p<=0)continue;
+      const st=1700+(r.d/maxD)*6500,p=ease((t-st)/1400);if(p<=0)continue;
       const a=map.latLngToContainerPoint(r.ll),b=map.latLngToContainerPoint(r.tip);
       if(a.x<-80||a.y<-80||a.x>W+80||a.y>H+80)continue;
       let dx=b.x-a.x,dy=b.y-a.y;const n=Math.hypot(dx,dy)||1;dx/=n;dy/=n;
@@ -198,6 +200,40 @@ function startEgg(){
 function stopEgg(now){if(!egg)return;if(now){finishEgg();return;}if(!egg.fading)egg.fading=performance.now();}
 function finishEgg(){if(!egg)return;cancelAnimationFrame(egg.raf);egg.timers.forEach(clearTimeout);egg.off&&egg.off();egg.cv.remove();document.getElementById('map').classList.remove('egg-on');egg=null;eggOn=false;}
 window.PAEgg=startEgg;
+/* Near me · In aice liom: browser geolocation, used only in this page (nothing stored or sent) */
+let meLayer=null;
+function nearMe(){
+  if(!map)return;const box=$('#nearList');document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'});
+  if(!navigator.geolocation){toast('Your browser does not offer location.');return;}
+  box.hidden=false;box.innerHTML='<p class="muted">Asking your browser for your location… Your location stays on your device: it is not stored or sent anywhere.</p>';
+  navigator.geolocation.getCurrentPosition(p=>{
+    const me=L.latLng(p.coords.latitude,p.coords.longitude);userMoved=true;
+    if(meLayer)meLayer.remove();meLayer=L.layerGroup([L.circleMarker(me,{radius:7,color:'#fff1c9',weight:2,fillColor:'#e8b860',fillOpacity:.9}).bindTooltip('You are here',{className:'tt'}),L.circle(me,{radius:Math.min(p.coords.accuracy,5000),color:'#e8b860',weight:1,fillOpacity:.06,interactive:false})]).addTo(map);
+    const pool=SITES.concat(active.has('ss')&&standing?standing:[]).filter(s=>active.has(s[1]));
+    const near=pool.map(s=>[s,me.distanceTo([s[2],s[3]])]).sort((a,b)=>a[1]-b[1]).slice(0,8);
+    const far=near.length&&near[0][1]>60000;
+    map.flyTo(far?[near[0][0][2],near[0][0][3]]:me,far?10:12,{duration:1.4});
+    box.innerHTML=`<div class="near-h"><b>Nearest monuments</b> <span lang="ga">· In aice liom</span><button type="button" class="near-x" aria-label="Close">×</button></div>${far?'<p class="muted">You seem to be outside Ireland. Here are the monuments nearest to you.</p>':''}<ol class="near-ol">${near.map(([s,d],i)=>{const G=META.groups[s[1]];return `<li><button type="button" data-i="${i}"><span class="dot" style="background:${GCOL[s[1]]}"></span><span class="nm">${esc(s[5]||clean(s[4]))}<small>${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${s[5]?' · '+esc(clean(s[4])):''}</small></span><b>${d<1000?Math.round(d)+' m':(d/1000).toFixed(d<10000?1:0)+' km'}</b></button></li>`;}).join('')}</ol><p class="muted">Only the types switched on in the filters are listed. Most monuments are on private land, so ask before you visit.</p>`;
+    box.querySelector('.near-x').onclick=()=>{box.hidden=true;};
+    box.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const s=near[+b.dataset.i][0];map.flyTo([s[2],s[3]],14,{duration:1});select(s);const c=$('#card');if(innerWidth<900)setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),300);});
+  },err=>{box.innerHTML=`<p>Location not available (${esc(err.code===1?'permission was not given':'your device could not find a position')}). Nothing was stored.</p>`;},{enableHighAccuracy:false,timeout:12000,maximumAge:60000});
+}
+window.PANear=nearMe;
+function askDemo(){const f=window.PA_FEATURED[0],h=HOR[f.key];document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'});map.flyTo([h.lat,h.lon],11,{duration:1.2});userMoved=true;const s=SITES.find(x=>x[0]===f.smrs);select(s,f);setTimeout(()=>{const a=document.querySelector('#card .ask');if(a){a.scrollIntoView({behavior:'smooth',block:'nearest'});a.classList.add('pulse');setTimeout(()=>a.classList.remove('pulse'),1800);}},900);}
+/* Features · Gnéithe menu */
+(()=>{const btn=$('#featBtn'),menu=$('#featMenu');if(!btn)return;
+  const close=()=>{menu.hidden=true;btn.setAttribute('aria-expanded','false');};
+  document.body.appendChild(menu);/* escape the hero's clipping/stacking */
+  const place=()=>{const r=btn.getBoundingClientRect();if(innerWidth>600){menu.style.top=(r.bottom+8)+'px';menu.style.right=Math.max(8,innerWidth-r.right)+'px';menu.style.left='auto';}else{menu.style.top=(r.bottom+8)+'px';menu.style.left='';menu.style.right='';}};
+  addEventListener('resize',()=>{if(!menu.hidden)place();});addEventListener('scroll',()=>{if(!menu.hidden)close();},{passive:true});
+  btn.addEventListener('click',e=>{e.stopPropagation();const o=menu.hidden;if(o)place();menu.hidden=!o;btn.setAttribute('aria-expanded',String(o));if(o)menu.querySelector('a,button').focus({preventScroll:true});});
+  document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target))close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){close();btn.focus();}});
+  menu.addEventListener('click',e=>{const a=e.target.closest('[data-act]');if(!a)return;close();const act=a.dataset.act;
+    if(act==='egg'){e.preventDefault();setTimeout(startEgg,50);}else if(act==='near'){e.preventDefault();nearMe();}else if(act==='ask'){e.preventDefault();askDemo();}
+    else if(act==='theme'){e.preventDefault();$('#themeBtn').click();}});
+})();
+$('#nearBtn')&&$('#nearBtn').addEventListener('click',nearMe);
 document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;if((e.key==='g'||e.key==='G')&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&map)startEgg();});
 
 /* ---------- Newgrange light simulator ---------- */

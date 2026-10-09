@@ -18,7 +18,9 @@ It is a project by **Garry Lohan** (mechanical engineer and lecturer, ATU Galway
 | `prereg/tests_v1.json` | frozen pre-registration of tests T1–T5 (nothing scored yet) |
 | `BRAND.md` | the shared PA family brand and the PA Réalt palette |
 | `NOTICE.md` | data and code attributions |
-| `scripts/` | data pipeline: `fetch_data.sh` → `townland_pip.py` → `build_data.py` → `horizon.py` → `build_stars.py` → `d4m_triples.py`; `stamp.py` (name into the static HTML), `shoot.py` (screenshots) |
+| `site/js/ask.js` | **Ask PA Réalt · Fiafraigh**: answers built in the browser from the site's data (per-type templates plus hand-written answers for featured sites). No AI |
+| `PAID_TIER_PLAN.md` | design for the planned paid "Deep answer" AI tier (not live) |
+| `scripts/` | data pipeline: `fetch_data.sh` → `townland_pip.py` → `build_data.py` → `horizon.py` → `build_stars.py` → `scope_notes.py` → `build_ask.py` → `d4m_triples.py`; `stamp.py` (name into the static HTML), `shoot.py`, `egg_test.py`, `ask_test.py` (headless checks) |
 | `data/` | derived summaries (`smr_class_summary.json`, D4M triples); the raw data is not committed |
 
 **Rename the project.** Edit `site/js/config.js`, then run `python scripts/stamp.py`.

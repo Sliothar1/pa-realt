@@ -72,7 +72,7 @@ window.PA_GROUPCLAIMS = [
    evidence:"In Ruggles’ surveys, a significantly large share of the 4–6-stone rows point at mountain peaks and at the Moon’s limiting rise or set positions; most 3-stone rows have a lunar or hill orientation, or both.",
    caveat:"The ‘direction of interest’ is as often NE as SW, which makes the result harder to interpret.",
    src:["ruggles94"] },
- { en:"Axial-stone circles of Cork & Kerry", ga:"Ciorcail chloiche", verdict:"not",
+ { en:"Axial-stone circles of Cork & Kerry", ga:"Liagchiorcail", verdict:"not",
    claim:"The recumbent-stone axes carry solar or lunar alignments, as in Aberdeenshire.",
    evidence:"Among 31 circles there is no preference for hilltops and no systematic solar interest. The only sign is a weak lunar peak near −29° (6 of the 31).",
    src:["ruggles94"] }
