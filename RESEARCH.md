@@ -116,6 +116,7 @@ The full summary is in `data/smr_class_summary.json`.
   - The Copernicus DSM is ray-marched every 0.5° of azimuth, from 400 m to 60 km.
   - It applies Earth curvature with refraction k = 0.13 and an eye height of 1.6 m.
   - **Validation:** at Newgrange, az 135°, the model gives 0.83°; Patrick (1974) measured +0°51′ (0.85°).
+  - **All monuments** (`scripts/horizon_all.py`): the same method, vectorised on a DEM mosaic, for all 6,878 mapped monuments (about 40 s on 7 cores). The web gets 1° profiles (one byte per degree) in about 100 KB county buckets (`scripts/hz_shard.py`, `site/data/hz/`). They are loaded only when a card opens, and used for the rays, the card horizon, the Ask answers, visit sheets and the midwinter egg.
 - **Rise and set azimuths** (`site/js/astro.js` and the mirror `scripts/astro.py`).
   - Each azimuth is solved iteratively against the horizon profile, with Bennett refraction, the Sun's semi-diameter and lunar parallax.
   - Obliquity uses the Laskar series (24.04° at 3200 BC, 23.44° today).
@@ -188,6 +189,16 @@ The full protocol, null models and adoption rules are in [`prereg/tests_v1.json`
 - **T3. Stone rows and lunar standstills.** This is a replication of Ruggles on SMR data. It uses two nulls (random azimuth, and horizon peaks only) and runs Cork/Kerry and the rest of Ireland separately.
 - **T4. Intervisibility.** Passage tombs are tested against random siting on matched terrain within 20 km of each cemetery.
 - **T5. Horizon targets.** Stone pairs and rows are tested for aiming at horizon maxima of prominence ≥ 0.5°, checked at 0.3° and 1.0°.
+
+**Results (scored 9 Oct 2026; frozen code `c244e8f`, results `ab7fb46`).** Full write-up in [`site/results.html`](https://sliothar1.github.io/pa-realt/results.html), raw numbers in [`data/tests/results_v1.json`](data/tests/results_v1.json), log in [`TEST_LOG.md`](TEST_LOG.md), implementation choices in [`prereg/addendum_v1.md`](prereg/addendum_v1.md).
+
+| Test | n | Observed | Chance | Holm p | Verdict |
+|---|---|---|---|---|---|
+| T1 wedge tombs, midwinter-sunset bin | 51 | 19/51 = 37.3% (mean dir. 248°) | 6.2% | 0.0005 | **supported** (robust without Cork+Kerry) |
+| T2 passage-tomb declinations | 36 | KDE 0.142 (20/36 within 1.5°) | 0.092 | 0.019 | **supported** (robust without Brú na Bóinne); conflicts with NMS 2024 (n = 136, p = 0.896) |
+| T3 stone rows, lunar standstills | 119 | 6 rows | 5.9 random / 6.2 hill | 1.0 | **not supported** (null) |
+| T4 passage-tomb intervisibility | 216 | 83.8% see another tomb | 34.8% | 0.004 | **supported, with a caveat**: the null does not keep cemetery clustering; T4 was seen before the freeze (disclosed) |
+| T5 axes at horizon peaks | 245 | 58.8% | 59.7% | 1.0 | **not supported** (null) |
 
 **Outside the tests.** Single famous sites stay descriptive. Brennan's art-and-star readings have no testable protocol, so they are not scored.
 

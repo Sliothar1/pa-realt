@@ -35,3 +35,6 @@ sc = json.load(open('data/scope_notes.json', encoding='utf-8'))
 json.dump({'scope_source': sc['source'], 'care_source': 'National Monuments Service (2009). National Monuments in State Care: Ownership & Guardianship (county lists). https://www.archaeology.ie/',
            'scope': sc['notes']}, open('site/data/ask_kb.json', 'w', encoding='utf-8'), ensure_ascii=False)
 print('shards', len(shards), 'bytes', tot, 'care codes', len(care), 'mapped in care', sum(1 for s in allsites if s[0] in care))
+
+# small State-care index for the visit sheet (site/data/care.json)
+json.dump(sorted(k for k, v in care.items() if v), open('site/data/care.json', 'w'), separators=(',', ':'))

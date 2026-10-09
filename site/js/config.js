@@ -13,5 +13,6 @@ window.PA_CONFIG = {
     { name: "PA Marine", ga: "Mara", url: "https://sliothar1.github.io/PA-Marine-Demo/", icon: "dolphin" },
     { name: "PA Réalt", ga: "Réalt", url: "./", icon: "star", self: true }
   ],
+  credit: { scholar: "https://scholar.google.com/citations?user=9aBECzQAAAAJ&hl=en", linkedin: "https://www.linkedin.com/in/garry-lohan-14923814" },
   home: { label: "Brú na Bóinne", lat: 53.69473, lon: -6.47554, elev: 56 } // Newgrange, SMR ME019-045----
 };

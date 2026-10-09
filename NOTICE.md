@@ -10,3 +10,5 @@
 - **Code:** Leaflet 1.9.4 (BSD-2-Clause, `site/vendor/leaflet/LICENSE`); Astronomy Engine 2.1.19 by Don Cross (MIT, `site/vendor/astronomy/LICENSE`).
 - **Monument class definitions and Irish class terms:** National Monuments Service (2023), *Monument Class and Scope Notes* v1.1, © Government of Ireland, quoted with citation. **State-care flags:** NMS, *National Monuments in State Care: Ownership & Guardianship* county lists (2009).
 - **Visitor information for featured sites:** Heritage Ireland (OPW) pages and Dáil written answer 562 of 4 Nov 2025, cited in the answers.
+
+- **qrcode-generator** 1.4.4 © 2009 Kazuhiko Arase, MIT licence (`site/vendor/qrcode/`). “QR Code” is a registered trademark of DENSO WAVE INCORPORATED.

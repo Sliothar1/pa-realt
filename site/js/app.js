@@ -16,7 +16,8 @@ $('#themeBtn').addEventListener('click',()=>{const d=document.documentElement,t=
 /* toast */
 let tt;function toast(html,ms){const t=$('#toast');t.innerHTML=html;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),ms||5200);}
 /* family strip */
-$('#paFamily').innerHTML=`<svg class="pa-mark" aria-hidden="true"><use href="#i-pa"/></svg><span><i lang="ga">Teaghlach PA</i> · The PA family</span>`+C.family.map(f=>`<a href="${f.url}" ${f.self?'aria-current="page"':''}><svg aria-hidden="true"><use href="#i-${f.icon==='dolphin'?'dolphin':'realt'}" stroke-width="${f.icon==='dolphin'?2.6:2.6}"/></svg>${f.name}</a>`).join('');
+$('#paFamily').innerHTML=`<svg class="pa-mark" aria-hidden="true"><use href="#i-pa"/></svg><span><i lang="ga">Teaghlach PA</i> · The PA family</span>`+C.family.map(f=>`<a href="${f.url}" ${f.self?'aria-current="page"':''}><svg aria-hidden="true"><use href="#i-${f.icon==='dolphin'?'dolphin':'realt'}" stroke-width="${f.icon==='dolphin'?2.6:2.6}"/></svg>${f.name}</a>`).join('')+`<a href="family.html" class="pa-hub">All PA sites · <i lang="ga">Teaghlach</i> →</a>`;
+$('#paFamily').insertAdjacentHTML('afterend',`<p class="pa-credit">Designed and built by Garry Lohan · <a href="${C.credit.scholar}" target="_blank" rel="noopener">Google Scholar</a> · <a href="${C.credit.linkedin}" target="_blank" rel="noopener">LinkedIn</a></p>`);
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -29,7 +30,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 
 Promise.all(['data/sites.json','data/horizons.json','data/sky.json','data/newgrange_obs.json'].map(u=>fetch(u).then(r=>r.json()))).then(([s,h,k,n])=>{
   SITES=s.sites;META=s.meta;HOR=h;SKY=k;NG=n;
-  drawSkyline();heroSky();initMap();initNG();initDome();renderToday();renderClaims();renderSources();
+  drawSkyline();heroSky();initMap();initNG();initDome();renderToday();try{PALight.render($('#lwList'),HOR);$('#lwList').addEventListener('click',e=>{const a=e.target.closest('[data-lw]');if(!a)return;e.preventDefault();const f=window.PA_FEATURED.find(x=>x.key===a.dataset.lw),h=HOR[f.key];document.getElementById('explore').scrollIntoView({behavior:'smooth'});map.setView([h.lat,h.lon],12);userMoved=true;const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);});}catch(e){console.warn(e);}renderTestResults();renderClaims();renderSources();
   window.addEventListener('resize',()=>{drawSkyline();heroSky();drawNG();drawDome();});
 }).catch(e=>{console.error(e);$('#card').innerHTML='<p class="empty">Could not load data.</p>';});
 
@@ -98,11 +99,12 @@ function drawFeatured(){
     mk.on('click',()=>{const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);});featLayer.addLayer(mk);}
 }
 function featuredFor(s){return window.PA_FEATURED.find(f=>f.smrs===s[0]);}
-function select(s,f){selected=s;f=f||featuredFor(s);selected._f=f;drawRays(s);renderCard(s);try{history.replaceState(null,'','#site='+encodeURIComponent(s[0]));}catch(e){}}
+function select(s,f){selected=s;f=f||featuredFor(s);selected._f=f;const go=()=>{if(selected!==s)return;drawRays(s);renderCard(s);};if(s._hz!==undefined||f||!window.PAHz)go();else{let done=false;const once=()=>{if(!done){done=true;go();}};PAHz.get(s).then(once,once);setTimeout(once,2500);}try{history.replaceState(null,'','#site='+encodeURIComponent(s[0]));}catch(e){}}
 function rayKm(){const c=map.getCenter(),z=map.getZoom();const mpp=156543.03*Math.cos(c.lat*D)/Math.pow(2,z);return Math.max(.4,Math.min(60,140*mpp/1000));}
-function siteEvents(s){const f=s._f,h=f?HOR[f.key]:null;return {ev:A.events(h?h.lat:s[2],h?h.alt:null,era),dem:!!h};}
+function siteHz(s){const f=s._f;return f?HOR[f.key]:(s._hz||null);}
+function siteEvents(s){const h=siteHz(s);return {ev:A.events(h?h.lat:s[2],h?h.alt:null,era),dem:!!h};}
 function drawRays(s,keepOld){
-  if(!keepOld)rayLayer.clearLayers();const {ev}=siteEvents(s),km=rayKm(),f=s._f,h=f?HOR[f.key]:null,lat=h?h.lat:s[2],lon=h?h.lon:s[3];
+  if(!keepOld)rayLayer.clearLayers();const {ev}=siteEvents(s),km=rayKm(),f=s._f,h=siteHz(s),lat=h?h.lat:s[2],lon=h?h.lon:s[3];
   for(const e of ev){if(e.az==null)continue;const end=A.dest(lat,lon,e.az,km*(e.body==='moon'?.82:1));const sun=e.body==='sun';const hi=f&&f.events.includes(e.k);
     rayLayer.addLayer(L.polyline([[lat,lon],end],{color:sun?'#f3c46b':'#ddd6e8',weight:sun?(hi?9:7):5,opacity:sun?.16:.10,interactive:false}));
     rayLayer.addLayer(L.polyline([[lat,lon],end],{color:sun?(hi?'#fff1c9':'#f3c46b'):'#e6e0f0',weight:hi?2.6:1.5,opacity:.95,dashArray:sun?null:'4 5',interactive:false}));
@@ -121,30 +123,32 @@ function renderCard(s){
   const GA1={pt:'Tuama pasáiste',ct:'Tuama cúirte',po:'Tuama ursanach',wt:'Tuama dingeach',mu:'Tuama meigiliteach, neamhaicmithe',sc:'Liagchiorcal',sr:'Sraith gallán',sp:'Gallán, péire',he:'Heinse',cu:'Cursas',bb:'Adhlacadh bolláin',ss:'Gallán'}[s[1]];
   h+=`<span class="sc-cls" title="Irish class term: NMS Monument Class and Scope Notes">${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${GA1?` · <em lang="ga">${esc(GA1)}</em>`:''}</span>`;
   h+=`<dl class="kv"><dt>County</dt><dd>${esc(cty.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase()))}${ctyGa?` · <i lang="ga">${esc(ctyGa)}</i>`:''}</dd><dt>SMR no.</dt><dd>${f&&f.key==='carrowmore'?'SL014-209 (cemetery)':s[0].startsWith('NI:')?`${esc(s[0].slice(3))} · <a href="${META.ni_url}" target="_blank" rel="noopener">NI SMR (OGL) ↗</a>`:`<a href="${link}" target="_blank" rel="noopener">${esc(s[0])} ↗</a>`}</dd>${s[7]?`<dt>ITM</dt><dd>${s[7]} E, ${s[8]} N</dd>`:''}</dl>`;
-  if(f){const v=VLAB[f.verdict];h+=`<p style="margin:6px 0"><span class="verdict ${v[0]}">${v[1]}</span></p><p style="font-size:14px;margin:4px 0"><b>Claim.</b> ${esc(f.claim)}</p><p style="font-size:14px;margin:4px 0"><b>Evidence.</b> ${esc(f.evidence)}</p><p class="note">${esc(f.caveat)}</p><p class="note">Sources: ${srcLinks(f.src)}</p><canvas class="hz" id="hzc"></canvas><p class="note">Local horizon (DSM, height ×6), with sunrise and sunset points (gold) and the Moon’s major standstills (lilac).</p>`;}
+  if(f){const v=VLAB[f.verdict];h+=`<p style="margin:6px 0"><span class="verdict ${v[0]}">${v[1]}</span></p><p style="font-size:14px;margin:4px 0"><b>Claim.</b> ${esc(f.claim)}</p><p style="font-size:14px;margin:4px 0"><b>Evidence.</b> ${esc(f.evidence)}</p><p class="note">${esc(f.caveat)}</p><p class="note">Sources: ${srcLinks(f.src)}</p>`;}
+  const hz=siteHz(s);if(hz)h+=`<canvas class="hz" id="hzc"></canvas><p class="note">Real horizon from this spot (Copernicus 30 m surface model, height ×6, N → E → S → W → N), with sunrise and sunset points (gold) and the Moon’s major standstills (lilac).${hz.ground!=null?` Ground c. ${hz.ground} m.`:''}</p>`;
   h+=`<table class="rays"><tbody>${ev.filter(e=>e.az!=null).map(e=>`<tr class="${e.body}"><td>${esc(e.en)}${e.ga?`<div class="gl" lang="ga">${esc(e.ga)}</div>`:''}</td><td>${e.az.toFixed(1)}°</td></tr>`).join('')}</tbody></table>`;
-  h+=`<p class="note">Azimuths from true north for ${era<0?'c. 3200 BC (tilt 24.04°)':'today (tilt 23.44°)'}, Sun’s centre with refraction, Moon with parallax. ${dem?'Horizon from the Copernicus 30 m surface model (it includes trees and buildings).':'This assumes a <b>flat horizon</b>; real hills shift these points.'}</p>`;
+  h+=`<p class="note">Azimuths from true north for ${era<0?'c. 3200 BC (tilt 24.04°)':'today (tilt 23.44°)'}, Sun’s centre with refraction, Moon with parallax. ${dem?'Real horizon from the Copernicus 30 m surface model (it includes trees and buildings, so treat it as indicative, not a field survey).':'This assumes a <b>flat horizon</b> (the real-horizon profile could not be loaded).'}</p><p class="note"><a class="visitlink" href="visit.html?site=${encodeURIComponent(s[0])}" target="_blank" rel="noopener">🖨 Printable visit sheet · <i lang="ga">Bileog cuairte</i></a></p>`;
   h+=window.PAAsk?PAAsk.panel(s,f):'';
   $('#card').innerHTML=h;$('#card').scrollTop=0;if(window.PAAsk)PAAsk.bind($('#card'),s,f,{META,HOR});
-  if(f)drawHz(HOR[f.key],ev);
+  if(hz)drawHz(hz,ev);
 }
 function drawHz(h,ev){
   const cv=$('#hzc');if(!cv)return;const r=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);cv.width=r.width*dpr;cv.height=r.height*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
   const W=r.width,H=r.height,base=H-22,ex=6,X=az=>az/360*W,Y=a=>base-a*ex*(H/120)*2.2;
-  g.beginPath();g.moveTo(0,H);for(let i=0;i<h.alt.length;i++)g.lineTo(X(i*h.step),Y(h.alt[i]));g.lineTo(W,H);g.closePath();
+  g.beginPath();g.moveTo(0,H);for(let i=0;i<=h.alt.length;i++)g.lineTo(X(i*h.step),Y(h.alt[i%h.alt.length]));g.lineTo(W,H);g.closePath();
   const gr=g.createLinearGradient(0,base-30,0,H);gr.addColorStop(0,'#5a1a26');gr.addColorStop(1,'#1b0a10');g.fillStyle=gr;g.fill();g.strokeStyle='rgba(243,200,120,.8)';g.lineWidth=1;g.stroke();
   g.font='10px system-ui';g.fillStyle='rgba(247,236,214,.7)';['N','E','S','W','N'].forEach((t,i)=>g.fillText(t,Math.min(W-8,X(i*90)+2),H-6));
   for(const e of ev){if(e.az==null)continue;const x=X(e.az),y=Y(A.horAt(h.alt,e.az));g.strokeStyle=e.body==='sun'?'#f3c46b':'#c9bdf0';g.lineWidth=1.4;g.beginPath();g.moveTo(x,y-2);g.lineTo(x,y-16);g.stroke();g.fillStyle=e.body==='sun'?'#f3c46b':'#c9bdf0';g.beginPath();g.arc(x,y-18,2.4,0,7);g.fill();}
 }
 /* hidden gem: G (or triple-tap the logo) = Grianstad an Gheimhridh.
-   Fly to the Boyne, then golden midwinter-sunrise rays (3200 BC, flat horizon) grow from EVERY passage tomb in Ireland,
+   Fly to the Boyne, then golden midwinter-sunrise rays (3200 BC, real DSM horizon per tomb) grow from EVERY passage tomb in Ireland,
    rippling outward from Newgrange, with a dawn glow sweep and a sparkle on Newgrange. One canvas, ~216 rays: cheap. */
 let egg=null;
-function startEgg(){
+function startEgg(){if(window.__ptHz||!window.PAHz)return startEgg0();let ok=false;const go=()=>{if(!ok){ok=true;startEgg0();}};PAHz.pts().then(m=>{window.__ptHz=m;go();},go);setTimeout(go,1800);}
+function startEgg0(){
   if(!map||!SITES)return;stopEgg(true);eggOn=true;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,sm=innerWidth<600;
   const ng=[HOR.newgrange.lat,HOR.newgrange.lon],ob=A.obliquity(-3199);
-  const tombs=SITES.filter(s=>s[1]==='pt').map(s=>{const az=A.eventAz(-ob,s[2],null,true,'sun');const d=L.latLng(ng).distanceTo([s[2],s[3]])/1000;return {ll:[s[2],s[3]],tip:A.dest(s[2],s[3],az,10),d,ng:s[0]==='ME019-045----'};});
+  const PH=window.__ptHz||{};const tombs=SITES.filter(s=>s[1]==='pt').map(s=>{const az=A.eventAz(-ob,s[2],PH[s[0]]||null,true,'sun')??A.eventAz(-ob,s[2],null,true,'sun');const d=L.latLng(ng).distanceTo([s[2],s[3]])/1000;return {ll:[s[2],s[3]],tip:A.dest(s[2],s[3],az,10),d,ng:s[0]==='ME019-045----'};});
   const maxD=Math.max(...tombs.map(t=>t.d));
   const host=document.getElementById('map'),cv=document.createElement('canvas');cv.className='egg-canvas';host.appendChild(cv);
   const g=cv.getContext('2d');let W=0,H=0,dpr=Math.min(2,devicePixelRatio||1);
@@ -158,7 +162,7 @@ function startEgg(){
   egg.timers.push(setTimeout(()=>{map.invalidateSize(false);map.flyTo([53.66,-6.62],sm?8.25:9,{duration:reduce?0:1.8});},reduce?0:550));
   egg.timers.push(setTimeout(()=>toast('<span class="egg-toast"><i lang="ga">Grianstad an Gheimhridh</i> · Midwinter sunrise, 3200 BC</span>',6500),1200));
   egg.timers.push(setTimeout(()=>{map.flyToBounds(IRL,{padding:[sm?12:24,sm?12:24],duration:reduce?0:2.6});},reduce?0:7000));
-  egg.timers.push(setTimeout(()=>toast(`${tombs.length} passage tombs, each with its own midwinter sunrise line (flat horizon). Only a few of them actually face it, as the claims section shows. <span style="opacity:.7">Tap anywhere to clear.</span>`,7000),8000));
+  egg.timers.push(setTimeout(()=>toast(`${tombs.length} passage tombs, each with its own midwinter sunrise line on its real horizon. Only a few of them actually face it, as the claims section shows. <span style="opacity:.7">Tap anywhere to clear.</span>`,7000),8000));
   egg.timers.push(setTimeout(()=>stopEgg(),T_END));
   const tap=()=>{if(performance.now()-t0>700){stopEgg();$('#toast').classList.remove('show');}};egg.off=()=>{document.removeEventListener('pointerdown',tap,true);document.removeEventListener('keydown',esc_);};
   const esc_=e=>{if(e.key==='Escape'){stopEgg();$('#toast').classList.remove('show');}};document.addEventListener('pointerdown',tap,true);document.addEventListener('keydown',esc_);
@@ -385,3 +389,8 @@ function renderSources(){
 })();
 // Hidden gem for phones: triple-tap the PA Réalt logo (star + name) to draw midwinter rays (same as pressing G)
 (()=>{const b=document.querySelector('.brandlink');if(!b)return;let t=[];const hit=e=>{e.preventDefault();const now=Date.now();t=t.filter(x=>now-x<1200);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));}};b.style.touchAction='manipulation';b.addEventListener('click',hit);})();
+
+/* ---------- pre-registered test results (summary on the home page) ---------- */
+function renderTestResults(){fetch('data/tests_v1.json').then(r=>r.json()).then(R=>{const ol=document.querySelector('#tests ol.tests');if(!ol)return;const map={0:'T1',1:'T2',2:'T3',3:'T4',4:'T5'};
+  [...ol.children].forEach((li,i)=>{const t=R.tests[map[i]];if(!t)return;const p=t.p_holm<0.001?t.p_holm.toFixed(4):t.p_holm.toFixed(3);
+    li.insertAdjacentHTML('beforeend',`<p class="tres ${t.supported?'yes':'no'}"><b>${t.supported?'Supported':'Not supported'}</b> · ${map[i]} · n = ${t.n} · Holm-adjusted p = ${p}${t.supported?'':' (a null result)'} <a href="results.html#${map[i]}">details</a></p>`);});}).catch(()=>{});}
