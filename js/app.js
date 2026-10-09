@@ -59,15 +59,23 @@ function heroSky(){
 
 /* ---------- map ---------- */
 function initMap(){
-  map=L.map('map',{preferCanvas:true,zoomControl:true,minZoom:6,maxZoom:17,worldCopyJump:false}).setView([53.45,-7.9],innerWidth<600?6:7);
+  map=L.map('map',{preferCanvas:true,zoomControl:true,minZoom:5,maxZoom:17,worldCopyJump:false,zoomSnap:.25});fitIreland();
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'Monuments: <a href="https://data.gov.ie/dataset/national-monuments-service-archaeological-survey-of-ireland">National Monuments Service SMR</a> (CC BY 4.0) · <a href="https://www.data.gov.uk/dataset/46240fa5-db15-469e-b1c8-0460504b951c/northern-ireland-sites-and-monuments-record">NI SMR</a> (OGL v3) · Irish townland names: Tailte Éireann · Map © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
   layer=L.layerGroup().addTo(map);rayLayer=L.layerGroup().addTo(map);featLayer=L.layerGroup().addTo(map);
   renderChips();drawSites();drawFeatured();
   map.on('zoomend',()=>{if(selected)drawRays(selected);drawSites();});
   $('#eraOld').onclick=()=>setEra(-3199);$('#eraNow').onclick=()=>setEra(new Date().getFullYear());
   const q=$('#q');q.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=q.value.trim().toUpperCase();if(!v)return;const all=SITES.concat(standing||[]);const hit=all.find(s=>s[0].toUpperCase().startsWith(v))||all.find(s=>(s[4]||'').toUpperCase().startsWith(v))||all.find(s=>(s[5]||'').toUpperCase().startsWith(v))||all.find(s=>META.counties[s[6]].startsWith(v));if(hit){map.flyTo([hit[2],hit[3]],13);select(hit);}else toast('No monument found for “'+esc(q.value)+'”.');}});
-  const m=/site=([^&]+)/.exec(location.hash),mz=/[&?]z=(\d+)/.exec(location.hash);if(m){const s=SITES.find(x=>x[0]===decodeURIComponent(m[1]));if(s){if(!mz)map.setView([s[2],s[3]],12);select(s);}}
+  const m=/site=([^&]+)/.exec(location.hash),mz=/[&?]z=(\d+)/.exec(location.hash);if(m){const s=SITES.find(x=>x[0]===decodeURIComponent(m[1]));if(s){if(!mz)map.setView([s[2],s[3]],12);else map.setView([s[2],s[3]],+mz[1]);userMoved=true;select(s);}}
+  /* iOS Safari: the container can change size after fonts/layout settle; re-measure, and re-fit until the user moves the map */
+  const el=map.getContainer();['pointerdown','wheel','touchstart'].forEach(t=>el.addEventListener(t,()=>{userMoved=true;},{passive:true}));
+  const refit=()=>{map.invalidateSize(false);if(!userMoved&&!eggOn)fitIreland();};
+  if(window.ResizeObserver)new ResizeObserver(()=>refit()).observe(el);
+  addEventListener('load',refit);addEventListener('orientationchange',()=>setTimeout(refit,300));addEventListener('pageshow',refit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refit);setTimeout(refit,400);setTimeout(refit,1500);
 }
+const IRL=[[51.38,-10.68],[55.45,-5.40]];let userMoved=false,eggOn=false;
+function fitIreland(opt){const sm=innerWidth<600;map.fitBounds(IRL,Object.assign({paddingTopLeft:[sm?12:24,sm?12:24],paddingBottomRight:[sm?12:24,sm?12:24],animate:false},opt||{}));}
 function setEra(y){era=y;$('#eraOld').setAttribute('aria-pressed',y<0);$('#eraNow').setAttribute('aria-pressed',y>0);if(selected){drawRays(selected);renderCard(selected);}}
 function renderChips(){
   const n={};SITES.forEach(s=>n[s[1]]=(n[s[1]]||0)+1);n.ss=META.n_standing;
@@ -126,9 +134,71 @@ function drawHz(h,ev){
   g.font='10px system-ui';g.fillStyle='rgba(247,236,214,.7)';['N','E','S','W','N'].forEach((t,i)=>g.fillText(t,Math.min(W-8,X(i*90)+2),H-6));
   for(const e of ev){if(e.az==null)continue;const x=X(e.az),y=Y(A.horAt(h.alt,e.az));g.strokeStyle=e.body==='sun'?'#f3c46b':'#c9bdf0';g.lineWidth=1.4;g.beginPath();g.moveTo(x,y-2);g.lineTo(x,y-16);g.stroke();g.fillStyle=e.body==='sun'?'#f3c46b':'#c9bdf0';g.beginPath();g.arc(x,y-18,2.4,0,7);g.fill();}
 }
-/* hidden gem: G = grian: solstice sunrise rays from every passage tomb in view */
-document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;if((e.key==='g'||e.key==='G')&&map){rayLayer.clearLayers();const b=map.getBounds(),km=rayKm();let n=0;for(const s of SITES){if(s[1]!=='pt'||!b.contains([s[2],s[3]]))continue;const az=A.eventAz(-A.obliquity(era),s[2],null,true,'sun');rayLayer.addLayer(L.polyline([[s[2],s[3]],A.dest(s[2],s[3],az,km*.8)],{color:'#f3c46b',weight:1.6,opacity:.9,interactive:false}));n++;if(n>400)break;}
-  toast(`<i lang="ga">Grian</i>: midwinter sunrise rays (flat horizon, ${era<0?'c. 3200 BC':'today'}) drawn from the ${n} passage tombs in view. Do they all point that way? <b>No.</b> That is what the pre-registered tests are for.`,7000);document.getElementById('map').scrollIntoView({behavior:'smooth',block:'center'});}});
+/* hidden gem: G (or triple-tap the logo) = Grianstad an Gheimhridh.
+   Fly to the Boyne, then golden midwinter-sunrise rays (3200 BC, flat horizon) grow from EVERY passage tomb in Ireland,
+   rippling outward from Newgrange, with a dawn glow sweep and a sparkle on Newgrange. One canvas, ~216 rays: cheap. */
+let egg=null;
+function startEgg(){
+  if(!map||!SITES)return;stopEgg(true);eggOn=true;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,sm=innerWidth<600;
+  const ng=[HOR.newgrange.lat,HOR.newgrange.lon],ob=A.obliquity(-3199);
+  const tombs=SITES.filter(s=>s[1]==='pt').map(s=>{const az=A.eventAz(-ob,s[2],null,true,'sun');const d=L.latLng(ng).distanceTo([s[2],s[3]])/1000;return {ll:[s[2],s[3]],tip:A.dest(s[2],s[3],az,10),d,ng:s[0]==='ME019-045----'};});
+  const maxD=Math.max(...tombs.map(t=>t.d));
+  const host=document.getElementById('map'),cv=document.createElement('canvas');cv.className='egg-canvas';host.appendChild(cv);
+  const g=cv.getContext('2d');let W=0,H=0,dpr=Math.min(2,devicePixelRatio||1);
+  const size=()=>{W=host.clientWidth;H=host.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';g.setTransform(dpr,0,0,dpr,0,0);};size();
+  host.classList.add('egg-on');
+  const t0=performance.now(),LEN=sm?46:68,T_END=10000;
+  const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
+  egg={cv,raf:0,timers:[],off:null};
+  /* choreography */
+  const box=document.getElementById('explore')||host;box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  egg.timers.push(setTimeout(()=>{map.invalidateSize(false);map.flyTo([53.66,-6.62],sm?8.25:9,{duration:reduce?0:1.8});},reduce?0:550));
+  egg.timers.push(setTimeout(()=>toast('<span class="egg-toast"><i lang="ga">Grianstad an Gheimhridh</i> · Midwinter sunrise, 3200 BC</span>',4200),1200));
+  egg.timers.push(setTimeout(()=>{map.flyToBounds(IRL,{padding:[sm?12:24,sm?12:24],duration:reduce?0:2.2});},reduce?0:4600));
+  egg.timers.push(setTimeout(()=>toast(`${tombs.length} passage tombs, each with its own midwinter sunrise line (flat horizon). Only a few of them actually face it, as the claims section shows. <span style="opacity:.7">Tap the map to clear.</span>`,3600),6900));
+  egg.timers.push(setTimeout(()=>stopEgg(),T_END));
+  const tap=()=>{if(performance.now()-t0>700)stopEgg();};egg.off=()=>{host.removeEventListener('pointerdown',tap);document.removeEventListener('keydown',esc_);};
+  const esc_=e=>{if(e.key==='Escape')stopEgg();};host.addEventListener('pointerdown',tap);document.addEventListener('keydown',esc_);
+  const frame=now=>{
+    const t=reduce?8000:now-t0;if(host.clientWidth!==W||host.clientHeight!==H)size();
+    g.clearRect(0,0,W,H);
+    const fade=egg.fading?Math.max(0,1-(now-egg.fading)/800):Math.min(1,t/500);
+    /* warm wash + dawn glow sweeping from the south-east (where the midwinter Sun rises) towards the north-west */
+    g.globalAlpha=fade;
+    g.fillStyle=`rgba(40,10,18,${.28*fade})`;g.fillRect(0,0,W,H);
+    const sw=Math.min(1.4,Math.max(-.4,(t-500)/3200*1.8-.4));
+    const x0=W*1.05,y0=H*1.05,x1=-W*.05,y1=-H*.05,px=x0+(x1-x0)*sw,py=y0+(y1-y0)*sw,R=Math.hypot(W,H)*.55;
+    let gr=g.createRadialGradient(px,py,0,px,py,R);gr.addColorStop(0,'rgba(255,200,120,.30)');gr.addColorStop(.45,'rgba(243,170,90,.12)');gr.addColorStop(1,'rgba(243,170,90,0)');
+    g.globalCompositeOperation='lighter';g.fillStyle=gr;g.fillRect(0,0,W,H);
+    /* rays */
+    g.lineCap='round';
+    for(const r of tombs){
+      const st=1700+(r.d/maxD)*3800,p=ease((t-st)/1100);if(p<=0)continue;
+      const a=map.latLngToContainerPoint(r.ll),b=map.latLngToContainerPoint(r.tip);
+      if(a.x<-80||a.y<-80||a.x>W+80||a.y>H+80)continue;
+      let dx=b.x-a.x,dy=b.y-a.y;const n=Math.hypot(dx,dy)||1;dx/=n;dy/=n;
+      const L_=LEN*p*(r.ng?1.6:1),ex=a.x+dx*L_,ey=a.y+dy*L_;
+      const lg=g.createLinearGradient(a.x,a.y,ex,ey);lg.addColorStop(0,'rgba(255,226,160,.95)');lg.addColorStop(1,'rgba(243,190,100,0)');
+      g.strokeStyle=lg;g.lineWidth=r.ng?3:1.8;g.beginPath();g.moveTo(a.x,a.y);g.lineTo(ex,ey);g.stroke();
+      const pulse=Math.max(0,1-Math.abs((t-st)/600-.4));g.fillStyle=`rgba(255,214,140,${.35+.5*pulse})`;g.beginPath();g.arc(a.x,a.y,1.6+3*pulse,0,7);g.fill();
+    }
+    /* sparkle on Newgrange */
+    if(t>1500){const c=map.latLngToContainerPoint(ng),k=(t-1500)/1000;
+      const halo=g.createRadialGradient(c.x,c.y,0,c.x,c.y,34);halo.addColorStop(0,'rgba(255,230,170,.55)');halo.addColorStop(1,'rgba(255,230,170,0)');g.fillStyle=halo;g.beginPath();g.arc(c.x,c.y,34,0,7);g.fill();
+      for(let i=0;i<2;i++){const sz=(i?7:13)*(0.75+0.25*Math.sin(k*5+i*2)),rot=k*.9+i*.78;g.save();g.translate(c.x,c.y);g.rotate(rot);g.fillStyle=i?'rgba(255,240,200,.85)':'rgba(255,222,150,.95)';g.beginPath();
+        for(let j=0;j<8;j++){const rr=j%2?sz*.18:sz,an=j*Math.PI/4;g.lineTo(Math.cos(an)*rr,Math.sin(an)*rr);}g.closePath();g.fill();g.restore();}
+      for(let i=0;i<7;i++){const an=i*0.9+k*.6,rr=12+((k*14+i*9)%26),al=Math.max(0,.8-rr/40);g.fillStyle=`rgba(255,236,190,${al})`;g.beginPath();g.arc(c.x+Math.cos(an)*rr,c.y+Math.sin(an)*rr,1.2,0,7);g.fill();}}
+    g.globalCompositeOperation='source-over';g.globalAlpha=1;
+    if(egg&&egg.fading&&fade<=0){finishEgg();return;}
+    if(egg)egg.raf=requestAnimationFrame(frame);
+  };
+  egg.raf=requestAnimationFrame(frame);
+}
+function stopEgg(now){if(!egg)return;if(now){finishEgg();return;}if(!egg.fading)egg.fading=performance.now();}
+function finishEgg(){if(!egg)return;cancelAnimationFrame(egg.raf);egg.timers.forEach(clearTimeout);egg.off&&egg.off();egg.cv.remove();document.getElementById('map').classList.remove('egg-on');egg=null;eggOn=false;}
+window.PAEgg=startEgg;
+document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;if((e.key==='g'||e.key==='G')&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&map)startEgg();});
 
 /* ---------- Newgrange light simulator ---------- */
 let ngNeo=false,ngTimer=null;
@@ -278,4 +348,4 @@ function renderSources(){
 }
 })();
 // Hidden gem for phones: triple-tap the PA Réalt logo (star + name) to draw midwinter rays (same as pressing G)
-(()=>{const b=document.querySelector('.brandlink');if(!b)return;let t=[];const hit=e=>{e.preventDefault();const now=Date.now();t=t.filter(x=>now-x<1200);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));const m=document.getElementById('map');if(m&&m.scrollIntoView)m.scrollIntoView({behavior:'smooth',block:'center'});}};b.style.touchAction='manipulation';b.addEventListener('click',hit);})();
+(()=>{const b=document.querySelector('.brandlink');if(!b)return;let t=[];const hit=e=>{e.preventDefault();const now=Date.now();t=t.filter(x=>now-x<1200);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));}};b.style.touchAction='manipulation';b.addEventListener('click',hit);})();
