@@ -51,10 +51,12 @@
   <div class="wrap">
     <nav class="topline" aria-label="Site">
       <a class="brandlink" href="./"><svg class="mark" aria-hidden="true"><use href="#i-realt" stroke-width="2.4"/></svg><span class="brand" data-cfg="name">PA Réalt</span></a>
-      <a class="toplink" href="#explore">Map</a>
+      <div class="feat"><button class="toplink featbtn" id="featBtn" aria-haspopup="true" aria-expanded="false" aria-controls="featMenu"><span class="spark" aria-hidden="true">✦</span> <span class="fb-en">Features</span> <i lang="ga" class="fb-ga">Gnéithe</i></button>
+<div class="featmenu" id="featMenu" hidden role="menu" aria-label="Features · Gnéithe"><a role="menuitem" href="#explore"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span><b>The map</b><i lang="ga">An léarscáil</i><small>6,878 monuments, with sky rays</small></span></a><a role="menuitem" href="#" data-act="near"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg><span><b>Near me</b><i lang="ga">In aice liom</i><small>The monuments closest to you</small></span></a><a role="menuitem" href="#" data-act="ask"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M10 9.5a2 2 0 1 1 2.6 1.9c-.4.2-.6.5-.6 1M12 14.2v.1"/></svg><span><b>Ask PA Réalt</b><i lang="ga">Fiafraigh</i><small>Questions answered from the data</small></span></a><a role="menuitem" href="#newgrange"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18c3-6 15-6 18 0"/><path d="M11 13h2"/><path d="M6 8l5 5" stroke-dasharray="2 2"/><circle cx="5" cy="7" r="1.6"/></svg><span><b>Light in the chamber</b><i lang="ga">Solas sa seomra</i><small>The Newgrange sunrise simulator</small></span></a><a role="menuitem" href="#sky"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17a9 9 0 0 1 18 0z"/><path d="M8 11l.01 0M13 8l.01 0M16 12l.01 0" stroke-width="2.6"/></svg><span><b>Night sky</b><i lang="ga">Spéir na hoíche</i><small>The real sky over the Boyne, tonight</small></span></a><a role="menuitem" href="#" data-act="egg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18"/><path d="M7 17a5 5 0 0 1 10 0"/><path d="M12 6v3M5.6 9.6l2 2M18.4 9.6l-2 2"/></svg><span><b>Try the midwinter sunrise</b><i lang="ga">Grianstad an gheimhridh</i><small>Rays from every passage tomb</small></span></a><a role="menuitem" href="#claims"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 20h14M6 8h12"/><path d="M6 8l-3 6a3 3 0 0 0 6 0zM18 8l-3 6a3 3 0 0 0 6 0z"/></svg><span><b>Claims vs evidence</b><i lang="ga">Éileamh agus fianaise</i><small>What holds up, and what doesn’t</small></span></a><a role="menuitem" href="#tests"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg><span><b>Pre-registered tests</b><i lang="ga">Tástálacha</i><small>Written down before scoring</small></span></a><a role="menuitem" href="#sources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/></svg><span><b>Sources & credits</b><i lang="ga">Foinsí agus ceadúnais</i><small>Who made the data, and its licences</small></span></a><a role="menuitem" href="#" data-act="theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg><span><b>Night / dawn</b><i lang="ga">Oíche / breacadh</i><small>Switch the colour theme</small></span></a><p class="fm-foot">Psst: you can also press <kbd>G</kbd>, or tap the logo three times.</p></div></div>
+      <a class="toplink opt" href="#explore">Map</a>
       <a class="toplink opt" href="#newgrange">Newgrange</a>
-      <a class="toplink" href="#sky">Sky</a>
-      <a class="toplink" href="#claims">Evidence</a>
+      <a class="toplink opt2" href="#sky">Sky</a>
+      <a class="toplink opt" href="#claims">Evidence</a>
       <a class="toplink opt" href="#tests">Tests</a>
       <button class="iconbtn" id="themeBtn" aria-label="Toggle night / dawn" title="Oíche / breacadh · night / dawn">◐</button>
     </nav>
@@ -77,6 +79,7 @@
       <span><i lang="ga">An léarscáil</i> · The map <small>Monuments: NMS SMR (CC BY 4.0) and NI SMR (OGL). Rays are computed, not surveyed.</small></span>
       <span class="ctrls">
         <input class="search" id="q" type="search" placeholder="Townland, SMR no. or county" aria-label="Search monuments">
+        <button type="button" class="nearbtn" id="nearBtn" title="Uses your browser’s location, only on this page. Nothing is stored or sent."><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg> Near me <i lang="ga">In aice liom</i></button>
         <span class="seg" role="group" aria-label="Sky epoch"><button id="eraOld" aria-pressed="true" title="Earth’s tilt c. 3200 BC (24.04°)">3200 BC</button><button id="eraNow" aria-pressed="false" title="Earth’s tilt today (23.44°)">Today</button></span>
       </span>
     </div>
@@ -87,6 +90,7 @@
           <h3><span class="ga" lang="ga">Cineálacha</span>Monument types</h3>
           <div class="chips" id="chips"></div>
         </div>
+        <div class="nearlist" id="nearList" hidden aria-live="polite"></div>
         <div class="card-site" id="card" aria-live="polite">
           <p class="empty"><b>Tap a monument</b> to see its card: the Irish and English townland names, its class, a link to the official record, and rays for the solstices, the equinoxes and the Moon’s standstills.<br><br>The gold stars mark featured sites with a claimed alignment. Try <b>Newgrange</b>.</p>
         </div>
@@ -177,7 +181,20 @@
   </section>
 
   <section id="sources" class="reveal" aria-labelledby="sH">
-    <h2 class="sect" id="sH"><span class="ga" lang="ga">Foinsí agus ceadúnais</span>Data, sources &amp; licences</h2>
+    <h2 class="sect" id="sH"><span class="ga" lang="ga">Foinsí agus ceadúnais</span>Sources &amp; credits</h2>
+    <div class="credits-wrap"><table class="credits"><thead><tr><th>What</th><th>From</th><th>Licence</th></tr></thead><tbody>
+      <tr><td>Monuments, Republic of Ireland (records and descriptions)</td><td><a href="https://data.gov.ie/dataset/national-monuments-service-archaeological-survey-of-ireland">National Monuments Service, Sites and Monuments Record</a> (snapshot 1 Dec 2025)</td><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td></tr>
+      <tr><td>Monuments, Northern Ireland</td><td><a href="https://www.data.gov.uk/dataset/46240fa5-db15-469e-b1c8-0460504b951c/northern-ireland-sites-and-monuments-record">Northern Ireland Sites and Monuments Record</a>, DfC Historic Environment Division, via OpenDataNI. Contains public sector information licensed under the Open Government Licence v3.0.</td><td><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">OGL v3.0</a></td></tr>
+      <tr><td>Townland names, Irish and English</td><td><a href="https://gsi.geodata.gov.ie/server/rest/services/Third_Party/IE_GSI_Tailte_Eireann_Townlands_IE26_ITM/FeatureServer/0">Tailte Éireann</a>, Townlands, National Statutory Boundaries 2019</td><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td></tr>
+      <tr><td>Monument class definitions and Irish class terms</td><td><a href="https://www.archaeology.ie/collections-and-publications/publications/monument-class-and-scope-notes/">NMS Monument Class and Scope Notes</a> (2023); <a href="https://www.archaeology.ie/">National Monuments in State Care</a> lists (2009)</td><td>© Government of Ireland, quoted with citation</td></tr>
+      <tr><td>Horizons (terrain)</td><td><a href="https://registry.opendata.aws/copernicus-dem/">Copernicus GLO-30 DEM</a>: © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA</td><td>Copernicus DEM licence (free, with attribution; see the <a href="https://registry.opendata.aws/copernicus-dem/">registry</a>)</td></tr>
+      <tr><td>Basemap</td><td>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, standard tiles (recoloured)</td><td><a href="https://opendatacommons.org/licenses/odbl/">ODbL</a></td></tr>
+      <tr><td>Stars and constellations</td><td><a href="https://github.com/ofrohn/d3-celestial">d3-celestial</a> data © 2015 Olaf Frohn. Stars from XHIP, an extended Hipparcos compilation (Anderson &amp; Francis 2012); lines after the IAU.</td><td><a href="https://github.com/ofrohn/d3-celestial/blob/master/LICENSE">BSD-3-Clause</a></td></tr>
+      <tr><td>Sun, Moon and planets</td><td><a href="https://github.com/cosinekitty/astronomy">Astronomy Engine</a> 2.1.19 © Don Cross</td><td>MIT</td></tr>
+      <tr><td>Map library</td><td><a href="https://leafletjs.com">Leaflet</a> 1.9.4</td><td>BSD-2-Clause</td></tr>
+      <tr><td>Newgrange light measurements</td><td>National Monuments Service (2024), <i>Winter Solstice Phenomenon at Newgrange</i> (F. Prendergast)</td><td>Quoted with citation</td></tr>
+    </tbody></table></div>
+    <h3 class="sub-h">All references</h3>
     <ul class="src-list" id="srcList"></ul>
   </section>
 
@@ -193,7 +210,7 @@
 <footer class="foot">
   <p class="seanfhocal-f"><span lang="ga">Is maith an scéalaí an aimsir.</span> <span class="tr">Time is a good storyteller. (Seanfhocal)</span></p>
   <i lang="ga">Déanta i nGaillimh</i> · Made in Galway<br>
-  © 2026 <span data-cfg="author">Garry Lohan</span> · Data © National Monuments Service, DfC Historic Environment Division (OGL), Tailte Éireann, Copernicus, © OpenStreetMap contributors · <span title="Hidden gem">Press <kbd>G</kbd> for <i lang="ga">grian</i></span>
+  © 2026 <span data-cfg="author">Garry Lohan</span> · Data © National Monuments Service, DfC Historic Environment Division (OGL), Tailte Éireann, Copernicus, © OpenStreetMap contributors · <a href="#sources">Sources &amp; credits</a> · <span title="Hidden gem">Press <kbd>G</kbd> for <i lang="ga">grian</i></span>
 </footer>
 <div class="disclaimer" role="note">Research prototype by Garry Lohan (ATU Galway). Alignments are computed, not field-surveyed. Not an official National Monuments Service product.</div>
 <div class="toast" id="toast" role="status"></div>
@@ -202,6 +219,7 @@
 <script src="vendor/astronomy/astronomy.browser.min.js" defer></script>
 <script src="js/featured.js" defer></script>
 <script src="js/astro.js" defer></script>
+<script src="js/ask.js" defer></script>
 <script src="js/app.js" defer></script>
 </body>
 </html>
