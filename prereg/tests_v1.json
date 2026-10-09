@@ -1,0 +1,62 @@
+{
+  "written": "2026-10-09 (Europe/Dublin), BEFORE any test was scored. Only feasibility counts (how many records contain a compass-orientation phrase) were looked at; no directions were tabulated.",
+  "purpose": "Pre-registration for the PA Réalt alignment tests T1-T5 (RESEARCH.md section 6)",
+  "author": "Garry Lohan (ATU Galway)",
+  "data": {
+    "monuments": "National Monuments Service SMR open data, SMROpenData_20251201.csv (CC BY 4.0), plus the Northern Ireland SMR nismr_10092026.geojson (OGL v3) for T4/T5 siting only; site/data/sites.json as built by scripts/build_data.py at the prereg commit",
+    "orientation_source": "WEB_NOTES free text. The parser (scripts/orient_parse.py, to be committed BEFORE scoring and frozen) extracts only explicit 16-point compass phrases ('oriented NE-SW', 'faces E', 'axis WSW-ENE', 'opens to the SW'); a bare axis (e.g. NE-SW) is ambiguous by 180 deg, and the facing direction is used only when the text says 'faces'/'opens'/'entrance at'",
+    "horizon": "Copernicus GLO-30 DSM horizon per site (scripts/horizon.py: 0.5 deg az step, 400 m to 60 km, k = 0.13, eye 1.6 m). Validation gate: Newgrange az 135 deg must lie within 0.1 deg of Patrick (1974) +0 deg 51 arcmin (current 0.83 deg)",
+    "astronomy": "Declination from (az, horizon alt, latitude) with Bennett refraction; obliquity Laskar at 3200 BC (passage tombs, cursus, henges) and 2200 BC (wedge tombs, stone rows/circles/pairs, boulder-burials); lunar inclination 5.145 deg, parallax 0.95 deg"
+  },
+  "feasibility_counts_seen": {"wedge tomb": 309, "court tomb": 90, "portal tomb": 81, "passage tomb": 43, "stone row": 136, "standing stone pair": 153, "five-stone circle": 47, "multiple-stone circle": 37},
+  "global_rules": {
+    "monte_carlo": "10,000 draws, seed 20261009",
+    "compass_quantisation": "the parsed bearings are 16-point (22.5 deg) bins; every null draw is quantised the same way (random true azimuth -> nearest 16-point bin), so the test does not reward bin artefacts",
+    "multiple_testing": "Holm-Bonferroni across the 5 primary tests at family alpha 0.05",
+    "adoption_rule": "a test 'supports an alignment' only if its Holm-adjusted p < 0.05 AND the effect has the pre-stated direction AND it survives the robustness check named for that test. Otherwise it is reported as 'not supported'. Every result is reported, whether it passes or fails",
+    "no_peeking": "no tabulation of parsed directions before scripts/orient_parse.py and this file are committed; TEST_LOG.md records commit hashes"
+  },
+  "tests": {
+    "T1": {
+      "name": "Wedge tombs face the setting sun (WSW-SW)",
+      "population": "wedge tombs with a parsed FACING direction (entrance/front)",
+      "statistic": "fraction of facing azimuths within the 16-point bins containing the winter-solstice sunset azimuth at that site, 2200 BC, flat horizon (primary) and DSM horizon (secondary)",
+      "null": "random-rotation Monte Carlo: each tomb gets a uniform random azimuth, quantised, and the same statistic is computed; plus a Rayleigh/V-test of mean direction against 236 deg",
+      "direction": "excess over the null",
+      "robustness": "holds when Cork+Kerry (the densest cluster) is excluded"
+    },
+    "T2": {
+      "name": "Passage tombs at solstice/equinox/standstill declinations",
+      "population": "passage tombs with parsed passage orientation (expected ~43) plus the surveyed featured axes; the NMS 2024 result (136 tombs, global p = 0.896) is the benchmark",
+      "statistic": "kernel density (sigma 1.5 deg) of declination at the 7 target declinations: +/-eps, 0, +/-(eps+i), +/-(eps-i); a summed-density score",
+      "null": "uniform random azimuth (quantised) through the same DSM horizon",
+      "direction": "score above the null",
+      "robustness": "holds when Brú na Bóinne sites are excluded"
+    },
+    "T3": {
+      "name": "Stone rows and the lunar standstills (Ruggles replication)",
+      "population": "stone rows with a parsed axis (expected ~136); both ends of the axis considered and the lower-horizon end used as the 'target' end",
+      "statistic": "count of declinations within 1.5 deg of +/-(eps+i) and +/-(eps-i) at 2200 BC",
+      "null": "random azimuth Monte Carlo through each site's DSM horizon; hill-target confound: second null drawing azimuths only from local horizon maxima",
+      "direction": "excess over BOTH nulls",
+      "robustness": "Cork/Kerry and the rest of Ireland analysed separately; the effect must have the same sign in both"
+    },
+    "T4": {
+      "name": "Passage-tomb intervisibility",
+      "population": "all mapped passage tombs (Republic + NI)",
+      "statistic": "fraction of tombs with at least one other passage tomb within 10 km and visible (DSM line of sight), and the fraction of those where the visible tomb is higher",
+      "null": "the same number of points placed at random on cells with the same elevation/slope distribution within 20 km of each real cemetery (1,000 draws; this test only)",
+      "direction": "excess over the null",
+      "robustness": "Prendergast 2016 (52 of 132 directed at other tombs, 49 higher) is the published comparison, not a scored result"
+    },
+    "T5": {
+      "name": "Stone pairs/rows aimed at horizon peaks",
+      "population": "standing-stone pairs and stone rows with a parsed axis",
+      "statistic": "fraction of axes (either end) whose bearing bin contains a local horizon maximum of prominence >= 0.5 deg",
+      "null": "random azimuth Monte Carlo on each site's own horizon",
+      "direction": "excess over the null",
+      "robustness": "holds with prominence threshold 0.3 and 1.0 deg"
+    }
+  },
+  "not_tested": ["individual famous sites (single cases cannot be tested statistically; reported descriptively)", "Martin Brennan's stellar/stone-art claims (no testable protocol)"]
+}
