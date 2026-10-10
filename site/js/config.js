@@ -7,7 +7,7 @@ window.PA_CONFIG = {
   subtitleGa: "Cloch agus spéir",
   tagline: "Ireland’s Neolithic and Bronze Age monuments, and the sky they face.",
   author: "Garry Lohan",
-  affiliation: "ATU Galway",
+  affiliation: "",
   repo: "https://github.com/Sliothar1/pa-realt",
   family: [
     { name: "PA Marine", ga: "Mara", url: "https://sliothar1.github.io/PA-Marine-Demo/", icon: "dolphin" },
