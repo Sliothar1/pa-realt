@@ -24,15 +24,32 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 /* spiral gem */
 $('#m1').addEventListener('click',()=>toast('Stone C10 at Newgrange is a <i>three-spiral</i> stone, “often wrongly called a triple spiral” (NMS 2024 report, note 12). This line art is original.'));
 
+/* ---------- lazy libraries: Leaflet (map) and Astronomy Engine (Newgrange, sky dome, light this week) load only when needed ---------- */
+const _ld={};
+function loadJS(src){return _ld[src]||(_ld[src]=new Promise((ok,no)=>{const e=document.createElement('script');e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e);}));}
+function loadCSS(href){if(_ld[href])return _ld[href];return _ld[href]=new Promise(ok=>{const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.onload=ok;l.onerror=ok;document.head.appendChild(l);});}
+const ensureAstro=()=>window.Astronomy?Promise.resolve():loadJS('vendor/astronomy/astronomy.browser.min.js');
+let dataReady=null,mapP=null,astroP=null;
+function ensureMap(){return mapP||(mapP=Promise.all([dataReady,loadCSS('vendor/leaflet/leaflet.css'),window.L?0:loadJS('vendor/leaflet/leaflet.js')]).then(()=>{initMap();}));}
+function withMap(fn){return (...a)=>ensureMap().then(()=>fn(...a));}
+function ensureSky(){return astroP||(astroP=Promise.all([dataReady,ensureAstro()]).then(()=>{initNG();initDome();renderToday();try{PALight.render($('#lwList'),HOR);$('#lwList').addEventListener('click',e=>{const a=e.target.closest('[data-lw]');if(!a)return;e.preventDefault();ensureMap().then(()=>{const f=window.PA_FEATURED.find(x=>x.key===a.dataset.lw),h=HOR[f.key];document.getElementById('explore').scrollIntoView({behavior:'smooth'});map.setView([h.lat,h.lon],12);userMoved=true;const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);});});}catch(e){console.warn(e);}}));}
+let allLoaded=false;window.PAEnsureAll=()=>allLoaded?null:dataReady.then(()=>Promise.all([ensureMap(),ensureSky()])).then(()=>{allLoaded=true;}).catch(()=>{});
+function whenNear(el,fn){if(!el)return;if(!('IntersectionObserver' in window)){fn();return;}const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();fn();}},{rootMargin:'300px 0px'});o.observe(el);}
+
 const fmtT=(d)=>d?new Intl.DateTimeFormat('en-IE',{timeZone:TZ,hour:'2-digit',minute:'2-digit'}).format(d):'—';
 const fmtD=(d)=>new Intl.DateTimeFormat('en-IE',{timeZone:TZ,weekday:'short',day:'numeric',month:'short',year:'numeric'}).format(d);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-Promise.all(['data/sites.json','data/horizons.json','data/sky.json','data/newgrange_obs.json'].map(u=>fetch(u).then(r=>r.json()))).then(([s,h,k,n])=>{
+dataReady=Promise.all(['data/sites.json','data/horizons.json','data/sky.json','data/newgrange_obs.json'].map(u=>fetch(u).then(r=>r.json()))).then(([s,h,k,n])=>{
   SITES=s.sites;META=s.meta;HOR=h;SKY=k;NG=n;
-  drawSkyline();heroSky();initMap();initNG();initDome();renderToday();try{PALight.render($('#lwList'),HOR);$('#lwList').addEventListener('click',e=>{const a=e.target.closest('[data-lw]');if(!a)return;e.preventDefault();const f=window.PA_FEATURED.find(x=>x.key===a.dataset.lw),h=HOR[f.key];document.getElementById('explore').scrollIntoView({behavior:'smooth'});map.setView([h.lat,h.lon],12);userMoved=true;const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);});}catch(e){console.warn(e);}renderTestResults();renderClaims();renderSources();
-  window.addEventListener('resize',()=>{drawSkyline();heroSky();drawNG();drawDome();});
-}).catch(e=>{console.error(e);$('#card').innerHTML='<p class="empty">Could not load data.</p>';});
+  drawSkyline();heroSky();renderTestResults();renderClaims();renderSources();initSearch();
+  window.addEventListener('resize',()=>{drawSkyline();heroSky();if(astroP&&window.Astronomy){drawNG();drawDome();}});
+});
+dataReady.catch(e=>{console.error(e);$('#card').innerHTML='<p class="empty">Could not load data.</p>';});
+/* map: on approach (libraries fetched in parallel with the data), or at once for a #site= deep link; sky libraries: when Newgrange / sky / light-this-week come near */
+if(/site=/.test(location.hash))ensureMap();else whenNear($('#explore'),ensureMap);
+['#newgrange','#sky','#lightweek'].forEach(id=>whenNear($(id),ensureSky));
+if(/^#(newgrange|sky|lightweek)/.test(location.hash))ensureSky();
 
 /* ---------- hero: real horizon skyline + real pre-dawn stars over Newgrange ---------- */
 function drawSkyline(){
@@ -50,10 +67,10 @@ function bvColor(bv){const t=Math.max(-.3,Math.min(2,bv));if(t<0.3)return [214,2
 function heroSky(){
   const cv=$('#heroSky'),r=cv.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1);cv.width=r.width*dpr;cv.height=r.height*dpr;
   const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,r.width,r.height);
-  const date=new Date(Date.UTC(2026,11,21,7,10)),lat=C.home.lat,lst=lstDeg(date,C.home.lon); // pre-dawn, winter solstice 2026
+  const lat=C.home.lat,lst=190.9013; // pre-dawn, winter solstice 2026 (21 Dec 07:10 UTC): local sidereal time precomputed with Astronomy Engine 2.1.19
   const a0=60,a1=240,H=r.height-70;
   for(const s of SKY.stars){const [alt,az]=altaz(s[0],s[1],lst,lat);if(alt<0||az<a0||az>a1)continue;const x=(az-a0)/(a1-a0)*r.width,y=H-(alt/55)*H;if(y<0)continue;const m=s[2],rad=Math.max(.35,1.9-m*.32),c=bvColor(s[3]);g.fillStyle=`rgba(${c[0]},${c[1]},${c[2]},${Math.min(1,.95-m*.12)})`;g.beginPath();g.arc(x,y,rad,0,7);g.fill();}
-  const sun=Astronomy.Equator('Sun',date,new Astronomy.Observer(lat,C.home.lon,C.home.elev),true,true);const [sa,saz]=altaz(sun.ra*15,sun.dec,lst,lat);
+  const [sa,saz]=altaz(269.3696,-23.4383,lst,lat); // Sun RA/Dec (deg, of date, topocentric) at that moment, precomputed with Astronomy Engine 2.1.19
   const sx=(saz-a0)/(a1-a0)*r.width,gr=g.createRadialGradient(sx,H+10,0,sx,H+10,r.width*.35);gr.addColorStop(0,'rgba(243,200,120,.35)');gr.addColorStop(1,'rgba(243,200,120,0)');g.fillStyle=gr;g.fillRect(0,0,r.width,r.height);
   cv.title='Real stars over Newgrange’s south-eastern sky before dawn on the winter solstice, 21 Dec 2026, 07:10 GMT';
 }
@@ -66,7 +83,6 @@ function initMap(){
   renderChips();drawSites();drawFeatured();
   map.on('zoomend',()=>{if(selected)drawRays(selected);drawSites();});
   $('#eraOld').onclick=()=>setEra(-3199);$('#eraNow').onclick=()=>setEra(new Date().getFullYear());
-  const q=$('#q');q.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=q.value.trim().toUpperCase();if(!v)return;const all=SITES.concat(standing||[]);const hit=all.find(s=>s[0].toUpperCase().startsWith(v))||all.find(s=>(s[4]||'').toUpperCase().startsWith(v))||all.find(s=>(s[5]||'').toUpperCase().startsWith(v))||all.find(s=>META.counties[s[6]].startsWith(v));if(hit){map.flyTo([hit[2],hit[3]],13);select(hit);}else toast('No monument found for “'+esc(q.value)+'”.');}});
   const m=/site=([^&]+)/.exec(location.hash),mz=/[&?]z=(\d+)/.exec(location.hash);if(m){const s=SITES.find(x=>x[0]===decodeURIComponent(m[1]));if(s){if(!mz)map.setView([s[2],s[3]],12);else map.setView([s[2],s[3]],+mz[1]);userMoved=true;select(s);}}
   /* iOS Safari: the container can change size after fonts/layout settle; re-measure, and re-fit until the user moves the map */
   const el=map.getContainer();['pointerdown','wheel','touchstart'].forEach(t=>el.addEventListener(t,()=>{userMoved=true;},{passive:true}));
@@ -92,9 +108,9 @@ function drawSites(){
     m.on('click',()=>select(s));layer.addLayer(m);}
 }
 function clean(t){return String(t||'').replace(/\s*\(.*$/,'');}
-const starIcon=L.divIcon?null:null;
+
 function drawFeatured(){
-  const ic=L.divIcon({className:'',html:'<svg width="22" height="22" viewBox="0 0 24 24" style="filter:drop-shadow(0 0 5px rgba(243,200,120,.9))"><path d="M12 1.5 L14 10 L22.5 12 L14 14 L12 22.5 L10 14 L1.5 12 L10 10 Z" fill="#f3d79b" stroke="#5a1420" stroke-width="1"/></svg>',iconSize:[22,22],iconAnchor:[11,11]});
+  const ic=L.divIcon({className:'',html:'<svg width="22" height="22" viewBox="0 0 24 24" style="margin:2px;display:block;filter:drop-shadow(0 0 5px rgba(243,200,120,.9))"><path d="M12 1.5 L14 10 L22.5 12 L14 14 L12 22.5 L10 14 L1.5 12 L10 10 Z" fill="#f3d79b" stroke="#5a1420" stroke-width="1"/></svg>',iconSize:[26,26],iconAnchor:[13,13]});
   for(const f of window.PA_FEATURED){const h=HOR[f.key];const mk=L.marker([h.lat,h.lon],{icon:ic,zIndexOffset:1000,keyboard:true,title:f.en});mk.bindTooltip(`<i lang="ga">${esc(f.ga)}</i>${f.ga?'<br>':''}<b>${esc(f.en)}</b>`,{className:'tt',direction:'top',offset:[0,-10]});
     mk.on('click',()=>{const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);});featLayer.addLayer(mk);}
 }
@@ -203,7 +219,7 @@ function startEgg0(){
 }
 function stopEgg(now){if(!egg)return;if(now){finishEgg();return;}if(!egg.fading)egg.fading=performance.now();}
 function finishEgg(){if(!egg)return;cancelAnimationFrame(egg.raf);egg.timers.forEach(clearTimeout);egg.off&&egg.off();egg.cv.remove();document.getElementById('map').classList.remove('egg-on');egg=null;eggOn=false;}
-window.PAEgg=startEgg;
+window.PAEgg=withMap(startEgg);
 /* Near me · In aice liom: browser geolocation, used only in this page (nothing stored or sent) */
 let meLayer=null;
 function nearMe(){
@@ -222,7 +238,7 @@ function nearMe(){
     box.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const s=near[+b.dataset.i][0];map.flyTo([s[2],s[3]],14,{duration:1});select(s);const c=$('#card');if(innerWidth<900)setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),300);});
   },err=>{box.innerHTML=`<p>Location not available (${esc(err.code===1?'permission was not given':'your device could not find a position')}). Nothing was stored.</p>`;},{enableHighAccuracy:false,timeout:12000,maximumAge:60000});
 }
-window.PANear=nearMe;
+window.PANear=withMap(nearMe);
 function askDemo(){const f=window.PA_FEATURED[0],h=HOR[f.key];document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'});map.flyTo([h.lat,h.lon],11,{duration:1.2});userMoved=true;const s=SITES.find(x=>x[0]===f.smrs);select(s,f);setTimeout(()=>{const a=document.querySelector('#card .ask');if(a){a.scrollIntoView({behavior:'smooth',block:'nearest'});a.classList.add('pulse');setTimeout(()=>a.classList.remove('pulse'),1800);}},900);}
 /* Features · Gnéithe menu */
 (()=>{const btn=$('#featBtn'),menu=$('#featMenu');if(!btn)return;
@@ -234,11 +250,11 @@ function askDemo(){const f=window.PA_FEATURED[0],h=HOR[f.key];document.getElemen
   document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target))close();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){close();btn.focus();}});
   menu.addEventListener('click',e=>{const a=e.target.closest('[data-act]');if(!a)return;close();const act=a.dataset.act;
-    if(act==='egg'){e.preventDefault();setTimeout(startEgg,50);}else if(act==='near'){e.preventDefault();nearMe();}else if(act==='ask'){e.preventDefault();askDemo();}
+    if(act==='egg'){e.preventDefault();ensureMap().then(()=>setTimeout(startEgg,50));}else if(act==='near'){e.preventDefault();withMap(nearMe)();}else if(act==='ask'){e.preventDefault();withMap(askDemo)();}
     else if(act==='theme'){e.preventDefault();$('#themeBtn').click();}});
 })();
-$('#nearBtn')&&$('#nearBtn').addEventListener('click',nearMe);
-document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;if((e.key==='g'||e.key==='G')&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&map)startEgg();});
+$('#nearBtn')&&$('#nearBtn').addEventListener('click',withMap(nearMe));
+document.addEventListener('keydown',e=>{if(e.target.closest&&e.target.closest('input,textarea'))return;if((e.key==='g'||e.key==='G')&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&SITES)withMap(startEgg)();});
 
 /* ---------- Newgrange light simulator ---------- */
 let ngNeo=false,ngTimer=null;
@@ -250,13 +266,20 @@ function inHull(az,alt){const P=NG.hull;let inside=false;for(let i=0,j=P.length-
 function ngDate(){const day=+$('#ngDay').value,min=+$('#ngTime').value;const d=new Date(Date.UTC(2026,11,21)+day*864e5);d.setUTCMinutes(min);return d;}
 function initNG(){
   ['ngDay','ngTime'].forEach(id=>$('#'+id).addEventListener('input',drawNG));
+  /* keyboard: with the chart focused, Left/Right step the time (Shift = 5 min), Up/Down step the morning; Home/End jump to the start/end of dawn. The sliders themselves take arrow keys natively. */
+  $('#ngChart').addEventListener('keydown',e=>{const t=$('#ngTime'),d=$('#ngDay');const st=e.shiftKey?5:1;let h=true;
+    if(e.key==='ArrowRight')t.value=Math.min(+t.max,+t.value+st);else if(e.key==='ArrowLeft')t.value=Math.max(+t.min,+t.value-st);
+    else if(e.key==='ArrowUp')d.value=Math.min(+d.max,+d.value+1);else if(e.key==='ArrowDown')d.value=Math.max(+d.min,+d.value-1);
+    else if(e.key==='Home')t.value=t.min;else if(e.key==='End')t.value=t.max;else h=false;
+    if(h){e.preventDefault();drawNG();}});
   $('#ngEra').onclick=()=>{ngNeo=!ngNeo;$('#ngEra').classList.toggle('on',ngNeo);drawNG();};
   $('#ngPlay').onclick=()=>{if(ngTimer){clearInterval(ngTimer);ngTimer=null;$('#ngPlay').textContent='▶ Play dawn';return;}$('#ngTime').value=528;$('#ngPlay').textContent='❚❚ Pause';ngTimer=setInterval(()=>{const t=$('#ngTime');t.value=+t.value+0.25;drawNG();if(+t.value>=575){clearInterval(ngTimer);ngTimer=null;$('#ngPlay').textContent='▶ Play dawn';}},60);};
   drawNG();
 }
 function drawNG(){
   if(!NG)return;const d=ngDate(),s=sunAt(d,ngNeo),on=s.alt>-1&&inHull(s.az,s.alt);
-  $('#ngDayOut').textContent=fmtD(d)+(+$('#ngDay').value===0?' · grianstad':'');
+  $('#ngDayOut').innerHTML=esc(fmtD(d))+(+$('#ngDay').value===0?' · <span lang="ga">grianstad</span>':'');
+  $('#ngDay').setAttribute('aria-valuetext',fmtD(d)+(+$('#ngDay').value===0?', winter solstice':''));$('#ngTime').setAttribute('aria-valuetext',d.toISOString().slice(11,16)+' GMT');
   $('#ngOut').innerHTML=`<b>${d.toISOString().slice(11,16)} GMT</b> · Sun azimuth <b>${s.az.toFixed(2)}°</b>, altitude <b>${s.alt.toFixed(2)}°</b>, declination <b>${s.dec.toFixed(2)}°</b>${ngNeo?' (Neolithic tilt)':''} · <span class="beamstate ${on?'on':''}">${on?'Beam in the chamber':'No direct light'}</span>`;
   /* chart */
   const cv=$('#ngChart'),r=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);cv.width=r.width*dpr;cv.height=r.height*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
@@ -367,7 +390,7 @@ function renderClaims(){
   const card=(f,isSite)=>{const v=VLAB[f.verdict];return `<article class="claim"><span class="verdict ${v[0]}">${v[1]}</span><h3>${esc(f.en)}${f.ga?`<span class="ga" lang="ga">${esc(f.ga)}</span>`:''}</h3><dl><dt>Claim</dt><dd>${esc(f.claim)}</dd><dt>Evidence</dt><dd>${esc(f.evidence)}</dd>${f.caveat?`<dt>Caveat</dt><dd>${esc(f.caveat)}</dd>`:''}</dl><p class="src">Sources: ${srcLinks(f.src)}${isSite?` · <a href="#explore" data-go="${f.key}">Show on map →</a>`:''}</p></article>`;};
   $('#claimCards').innerHTML=window.PA_FEATURED.map(f=>card(f,true)).join('');
   $('#groupCards').innerHTML=window.PA_GROUPCLAIMS.map(f=>card(f,false)).join('');
-  document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{const f=window.PA_FEATURED.find(x=>x.key===a.dataset.go),h=HOR[f.key];map.setView([h.lat,h.lon],12);const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);}));
+  document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>ensureMap().then(()=>{const f=window.PA_FEATURED.find(x=>x.key===a.dataset.go),h=HOR[f.key];map.setView([h.lat,h.lon],12);const s=SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];select(s,f);})));
 }
 function renderSources(){
   const m=META;const items=[
@@ -386,6 +409,33 @@ function renderSources(){
   ];
   $('#srcList').innerHTML=items.map(i=>`<li>${i}</li>`).join('');
 }
+/* ---------- monument search: Irish or English townland name, county (en/ga), class (en/ga), SMR no., featured names ---------- */
+function initSearch(){
+  const q=$('#q'),box=$('#qres');if(!q||!box)return;
+  const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,'').trim();
+  const GA1={pt:'Tuama pasáiste',ct:'Tuama cúirte',po:'Tuama ursanach',wt:'Tuama dingeach',mu:'Tuama meigiliteach',sc:'Liagchiorcal',sr:'Sraith gallán',sp:'Gallán, péire',he:'Heinse',cu:'Cursas',bb:'Adhlacadh bolláin',ss:'Gallán'};
+  const cty=i=>(META.counties[i]||'').toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+  const keyOf=s=>s._k||(s._k=[s[0],s[4],s[5],META.counties[s[6]],META.counties_ga&&META.counties_ga[s[6]],META.groups[s[1]].en,META.groups[s[1]].ga,GA1[s[1]],(META.groups[s[1]].classes||[]).join(' ')].map(norm).join(' | '));
+  let hits=[],cur=-1;
+  const close=()=>{box.hidden=true;q.setAttribute('aria-expanded','false');q.removeAttribute('aria-activedescendant');cur=-1;};
+  const open=sel=>{const run=withMap(()=>{map.flyTo([sel[2],sel[3]],13);userMoved=true;select(sel);});document.getElementById('explore').scrollIntoView({behavior:'smooth',block:'start'});run();close();};
+  const run=()=>{const v=norm(q.value);if(v.length<2){close();return;}
+    const words=v.split(/\s+/);const all=SITES.concat(standing||[]);
+    const feat=window.PA_FEATURED.filter(f=>words.every(w=>norm(f.en+' '+f.ga+' '+f.place).includes(w))).map(f=>{const h=HOR[f.key];return SITES.find(x=>x[0]===f.smrs)||[f.smrs,'pt',h.lat,h.lon,f.en,f.ga,META.counties.indexOf('SLIGO'),0,0];});
+    const scored=[];for(const s of all){const k=keyOf(s);if(!words.every(w=>k.includes(w)))continue;const nm=norm(s[4])+' '+norm(s[5]);scored.push([s,(norm(s[0]).startsWith(v)?0:nm.split(/[ |,()]+/).some(t=>t.startsWith(words[0]))?1:2)+(s[1]==='pt'?-.1:0)]);if(scored.length>4000)break;}
+    scored.sort((a,b)=>a[1]-b[1]);const seen=new Set(feat.map(s=>s[0]));hits=feat.concat(scored.map(x=>x[0]).filter(s=>!seen.has(s[0]))).slice(0,12);const total=feat.length+scored.length;
+    box.innerHTML=hits.length?hits.map((s,i)=>{const f=window.PA_FEATURED.find(x=>x.smrs===s[0]);const G=META.groups[s[1]];return `<li role="option" id="qr${i}" data-i="${i}" aria-selected="false"><span class="dot" style="background:${GCOL[s[1]]}" aria-hidden="true"></span><span class="nm">${f?'★ ':''}${s[5]||(f&&f.ga)?`<i lang="ga">${esc(s[5]||f.ga)}</i> · `:''}${esc(f?f.en:clean(s[4]))}<small>${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${GA1[s[1]]?` · <i lang="ga">${esc(GA1[s[1]])}</i>`:''} · ${esc(cty(s[6]))} · ${esc(s[0].replace(/-+$/,''))}</small></span></li>`;}).join('')+(total>hits.length?`<li class="more" role="presentation">${total.toLocaleString()} matches; showing the first ${hits.length}. Add a county or class to narrow it.</li>`:''):`<li class="more" role="presentation">No monument found for “${esc(q.value)}”.</li>`;
+    box.hidden=false;q.setAttribute('aria-expanded','true');cur=-1;$('#qstat').textContent=hits.length?`${total} monuments match`:'No monuments match';};
+  let tm;q.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(run,120);});
+  q.addEventListener('focus',()=>{if(q.value.trim().length>1)run();});
+  const mark=()=>{box.querySelectorAll('[role=option]').forEach((li,i)=>{li.setAttribute('aria-selected',i===cur);if(i===cur)li.scrollIntoView({block:'nearest'});});if(cur>=0)q.setAttribute('aria-activedescendant','qr'+cur);};
+  q.addEventListener('keydown',e=>{if(e.key==='ArrowDown'&&hits.length){e.preventDefault();if(box.hidden)run();cur=Math.min(hits.length-1,cur+1);mark();}else if(e.key==='ArrowUp'&&hits.length){e.preventDefault();cur=Math.max(0,cur-1);mark();}
+    else if(e.key==='Enter'){e.preventDefault();if(box.hidden)run();if(hits.length)open(hits[Math.max(0,cur)]);}else if(e.key==='Escape'){close();}});
+  box.addEventListener('mousedown',e=>e.preventDefault());
+  box.addEventListener('click',e=>{const li=e.target.closest('[data-i]');if(li)open(hits[+li.dataset.i]);});
+  q.addEventListener('blur',()=>setTimeout(close,150));
+  try{const pq=new URLSearchParams(location.search).get('q');if(pq){q.value=pq;run();}}catch(e){}
+}
 })();
 // Hidden gem for phones: triple-tap the PA Réalt logo (star + name) to draw midwinter rays (same as pressing G)
 (()=>{const b=document.querySelector('.brandlink');if(!b)return;let t=[];const hit=e=>{e.preventDefault();const now=Date.now();t=t.filter(x=>now-x<1200);t.push(now);if(t.length>=3){t=[];document.dispatchEvent(new KeyboardEvent('keydown',{key:'g'}));}};b.style.touchAction='manipulation';b.addEventListener('click',hit);})();
@@ -394,3 +444,16 @@ function renderSources(){
 function renderTestResults(){fetch('data/tests_v1.json').then(r=>r.json()).then(R=>{const ol=document.querySelector('#tests ol.tests');if(!ol)return;const map={0:'T1',1:'T2',2:'T3',3:'T4',4:'T5'};
   [...ol.children].forEach((li,i)=>{const t=R.tests[map[i]];if(!t)return;const p=t.p_holm<0.001?t.p_holm.toFixed(4):t.p_holm.toFixed(3);
     li.insertAdjacentHTML('beforeend',`<p class="tres ${t.supported?'yes':'no'}"><b>${t.supported?'Supported':'Not supported'}</b> · ${map[i]} · n = ${t.n} · Holm-adjusted p = ${p}${t.supported?'':' (a null result)'} <a href="results.html#${map[i]}">details</a></p>`);});}).catch(()=>{});}
+
+/* ---------- section nav: mark the section in view ---------- */
+(()=>{const links=[...document.querySelectorAll('#sitenav a')];if(!links.length||!('IntersectionObserver' in window))return;const byId={};links.forEach(a=>byId[a.getAttribute('href').slice(1)]=a);
+  const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.removeAttribute('aria-current'));const a=byId[e.target.id];if(a)a.setAttribute('aria-current','true');}}),{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(byId).forEach(id=>{const el=document.getElementById(id);if(el)o.observe(el);});})();
+
+/* ---------- in-page links: the map and sky panels load lazily and grow, so settle the scroll after they load ---------- */
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented||a.hasAttribute('data-act')||a.hasAttribute('data-go')||a.hasAttribute('data-lw'))return;
+  const id=a.getAttribute('href').slice(1);if(!id||/=/.test(id))return;const el=document.getElementById(id);if(!el)return;
+  const p=window.PAEnsureAll&&PAEnsureAll();if(!p)return;/* everything already loaded: the normal smooth scroll is enough */
+  const settle=()=>{const r=el.getBoundingClientRect();if(Math.abs(r.top-56)>8)el.scrollIntoView({behavior:'instant',block:'start'});};
+  p.then(()=>{setTimeout(settle,60);setTimeout(settle,700);});
+},true);
