@@ -45,7 +45,7 @@ try{
     ${ga?`<h1 lang="ga">${esc(ga)}</h1><p class="en">${esc(en)}</p>`:`<h1>${esc(en)}</h1><p class="en muted">No Irish form of this townland in the Tailte Éireann data</p>`}
     <p style="margin:2px 0">${esc(G.en.replace(/s$/,'').replace(/tombs \(/,'tomb ('))}${GA1[s[1]]?` · <i lang="ga">${GA1[s[1]]}</i>`:''}</p>
     <p class="muted" style="margin:2px 0;font-size:14px">${esc(cty)}${ctyGa?` · <i lang="ga">${esc(ctyGa)}</i>`:''} · ${ref} · ${s[2].toFixed(5)}° N, ${Math.abs(s[3]).toFixed(5)}° W${s[7]?` · ITM ${s[7]} E, ${s[8]} N`:''}</p>
-  </div><div><div class="qr" aria-label="QR code linking to this monument on PA Réalt">${qr.createSvgTag({cellSize:4,margin:0,scalable:true})}</div><p class="qrcap">Scan for the live map</p></div></div>
+  </div><div><div class="qr" role="img" aria-label="QR code linking to this monument on PA Réalt">${qr.createSvgTag({cellSize:4,margin:0,scalable:true})}</div><p class="qrcap">Scan for the live map</p></div></div>
   <h3>Access<span class="ga" lang="ga">Rochtain</span></h3>${acc}<p class="note">Status as of: ${esc(accDate)}.</p>
   <h3>Next solstices and equinoxes<span class="ga" lang="ga">Grianstaid agus cónochtaí</span></h3>
   <table><thead><tr><th>Event</th><th>Date</th><th>Sunrise (flat)</th><th>Over the real horizon</th></tr></thead><tbody>${tr}</tbody></table>
