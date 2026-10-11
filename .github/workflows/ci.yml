@@ -1,0 +1,38 @@
+name: data-checks
+on:
+  push:
+    branches: [main, pa-core]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: pa-core pinned (v0.2.0) and its unit tests pass
+        run: |
+          python3 -c "import sys; sys.path.insert(0,'vendor/pa-core'); import pa_core; assert pa_core.__version__=='0.2.0', pa_core.__version__"
+          (cd vendor/pa-core && python3 -m unittest discover -s tests)
+      - name: Prereg-frozen files unchanged since the freeze (c244e8f)
+        run: git diff --exit-code c244e8f -- prereg/tests_v1.json prereg/addendum_v1.md scripts/orient_parse.py scripts/run_tests.py scripts/horizon_all.py scripts/horizon.py scripts/astro.py data/tests/orientations.json
+      - name: Rebuild data path (ingest, validate, export, site/data); fail if anything changed
+        run: |
+          python3 scripts/d4m_build.py
+          git diff --exit-code || (echo "::error::Run scripts/d4m_build.py and commit the result" && exit 1)
+      - name: pa-d4m validate (schema, provenance, status vocabulary, visibility, byte round-trip of the table)
+        run: python3 vendor/pa-core/pa_d4m.py validate data/d4m --schema data/d4m/schema.json --roundtrip data/d4m/tabular.json
+      - name: pa-d4m diff guard (fail on a >10% row drop per type vs the base)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then BASE=origin/${{ github.base_ref }}; else BASE=${{ github.event.before }}; fi
+          if ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then BASE=HEAD~1; fi
+          if ! git cat-file -e "$BASE:data/d4m/A_prov.tsv" 2>/dev/null; then
+            echo "Base $BASE predates pa-core (no A_prov; rows were renamed SMR -> mon:SMR in this migration): guard starts from the next commit"; exit 0; fi
+          python3 vendor/pa-core/pa_d4m.py diff "git:$BASE" data/d4m --max-drop 10
+      - name: Privacy grep on published data (no consent / age_band / private fields)
+        run: |
+          if grep -rIlE '"(consent|age_band)"|prov\|consent|prov\|age_band|data/private' site/data; then echo "::error::private fields in site/data"; exit 1; fi
