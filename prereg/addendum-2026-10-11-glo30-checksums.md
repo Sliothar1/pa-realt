@@ -2,7 +2,7 @@
 
 New file; no frozen file is edited. Records the sha256 of the 27 Copernicus GLO-30 DSM tiles
 (`scripts/fetch_data.sh`, source `https://copernicus-dem-30m.s3.amazonaws.com/`) that were used for the
-horizon regeneration recorded in `addendum-2026-10-12.md` (3 sea tiles do not exist). A future re-run should
+horizon regeneration recorded in `addendum-2026-10-11.md` (3 sea tiles do not exist). A future re-run should
 check these before regenerating horizons: `sha256sum -c` against the list below, run in `data/dem/`.
 
 ```
