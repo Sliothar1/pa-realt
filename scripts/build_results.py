@@ -22,14 +22,19 @@ def strip(decs, tg):
     for d in range(-40, 41, 10): o.append(f'<text x="{X(d):.1f}" y="80" text-anchor="middle">{d:+d}°</text>')
     o.append('</svg>'); return ''.join(o)
 t1, t2, t3, t4, t5 = (T[k] for k in ('T1', 'T2', 'T3', 'T4', 'T5'))
-rows = [
+def row(k, nm, n, obs, null, pp, t, rb, *, cls=None, verdict=None):
+    if cls is None: cls = 'yes' if t['supported'] else 'no'
+    if verdict is None: verdict = 'Supported' if t['supported'] else 'Not supported'
+    return f'<tr class="{cls}"><td><a href="#{k}">{k}</a></td><td>{nm}</td><td>{n}</td><td>{obs}</td><td>{null}</td><td>{p(pp)}</td><td>{p(t["p_holm"])}</td><td>{rb}: {"holds" if t["robustness"]["holds"] else "fails"}</td><td><b>{verdict}</b></td></tr>'
+conf_rows = [
  ('T1', 'Wedge tombs face the midwinter-sunset bin', t1['n'], f"{pc(t1['primary']['stat'])} in the SW bin", f"{pc(t1['primary']['null']['mean'])} ({pc(t1['primary']['null']['q025'])}–{pc(t1['primary']['null']['q975'])})", t1['primary']['p'], t1, 'Cork + Kerry excluded'),
  ('T2', 'Passage tombs at solar/lunar declinations', t2['n'], f"score {t2['primary']['stat']:.3f}", f"{t2['primary']['null']['mean']:.3f} ({t2['primary']['null']['q025']:.3f}–{t2['primary']['null']['q975']:.3f})", t2['primary']['p'], t2, 'Brú na Bóinne excluded'),
  ('T3', 'Stone rows at lunar standstills', t3['n'], f"{t3['primary']['stat']} rows", f"{t3['primary']['null_random']['mean']:.1f} random · {t3['primary']['null_peaks']['mean']:.1f} hill targets", t3['primary']['p'], t3, 'Cork/Kerry vs rest'),
- ('T4', 'Passage-tomb intervisibility', t4['n'], f"{pc(t4['primary']['stat'])} see another tomb", f"{pc(t4['primary']['null']['mean'])} ({pc(t4['primary']['null']['q025'])}–{pc(t4['primary']['null']['q975'])})", t4['primary']['p'], t4, 'none named'),
  ('T5', 'Pair/row axes at horizon peaks', t5['n'], f"{pc(t5['primary']['stat'])} hit a peak", f"{pc(t5['primary']['null']['mean'])} ({pc(t5['primary']['null']['q025'])}–{pc(t5['primary']['null']['q975'])})", t5['primary']['p'], t5, 'thresholds 0.3°, 1.0°'),
 ]
-tab = ''.join(f'<tr class="{"yes" if t["supported"] else "no"}"><td><a href="#{k}">{k}</a></td><td>{nm}</td><td>{n}</td><td>{obs}</td><td>{null}</td><td>{p(pp)}</td><td>{p(t["p_holm"])}</td><td>{rb}: {"holds" if t["robustness"]["holds"] else "fails"}</td><td><b>{"Supported" if t["supported"] else "Not supported"}</b></td></tr>' for k, nm, n, obs, null, pp, t, rb in rows)
+tab_conf = ''.join(row(*r) for r in conf_rows)
+tab_exp = row('T4', 'Passage-tomb intervisibility', t4['n'], f"{pc(t4['primary']['stat'])} see another tomb", f"{pc(t4['primary']['null']['mean'])} ({pc(t4['primary']['null']['q025'])}–{pc(t4['primary']['null']['q975'])})", t4['primary']['p'], t4, 'none named', cls='exp', verdict='Exploratory signal')
+thead = '<thead><tr><th>Test</th><th>Question</th><th>n</th><th>Observed</th><th>Chance (mean, 95% range)</th><th>p</th><th>Holm p</th><th>Robustness</th><th>Verdict</th></tr></thead>'
 bands = t4['post_hoc_distance_bands']
 bt = ''.join(f'<tr><td>{a:g}–{b:g} km</td><td>{r[1]} / {r[0]} ({pc(r[2])})</td><td>{pc(nl[2])}</td></tr>' for (a, b), r, nl in zip(bands['bands_km'], bands['real'], bands['null']))
 page = f'''<!doctype html>
@@ -44,10 +49,21 @@ page = f'''<!doctype html>
 <main class="wrap page" id="main">
 <p class="eyebrow"><i lang="ga">Torthaí na dtástálacha</i> · Pre-registered test results</p>
 <h1>Five tests, scored once</h1>
-<p class="lead">Each test was written down with its data, comparison (null) model and pass rule <b>before</b> scoring (<a href="{GH}/blob/main/prereg/tests_v1.json">prereg/tests_v1.json</a>). The code that reads compass directions from the monument records, and the scoring code, were frozen and published first (commit <a href="{GH}/commit/{CODE}"><code>{CODE}</code></a>, with an <a href="{GH}/blob/main/prereg/addendum_v1.md">addendum</a> fixing the details). Everything was then run once on 9 Oct 2026 (results commit <a href="{GH}/commit/{RES}"><code>{RES}</code></a>). Every result is shown here, including the nulls. Log: <a href="{GH}/blob/main/TEST_LOG.md">TEST_LOG.md</a>.</p>
-<div class="verdicts"><span class="vchip yes">T1 supported</span><span class="vchip yes">T2 supported</span><span class="vchip no">T3 null</span><span class="vchip yes">T4 supported, with a caveat</span><span class="vchip no">T5 null</span></div>
-<div class="credits-wrap"><table class="credits rtab"><thead><tr><th>Test</th><th>Question</th><th>n</th><th>Observed</th><th>Chance (mean, 95% range)</th><th>p</th><th>Holm p</th><th>Robustness</th><th>Verdict</th></tr></thead><tbody>{tab}</tbody></table></div>
-<p class="note">p = one-sided Monte Carlo p value (10,000 random draws; T4: 1,000). The smallest possible values are 1/10,001 and 1/1,001. Holm p is adjusted for running five tests. “Supported” requires Holm p &lt; 0.05, an effect in the stated direction, and passing the named robustness check.</p>
+<p class="lead">Each test was written down with its data, comparison (null) model and pass rule <b>before</b> scoring (<a href="{GH}/blob/main/prereg/tests_v1.json">prereg/tests_v1.json</a>). The code that reads compass directions from the monument records, and the scoring code, were frozen and published first (commit <a href="{GH}/commit/{CODE}"><code>{CODE}</code></a>, with an <a href="{GH}/blob/main/prereg/addendum_v1.md">addendum</a> fixing the details). Everything was then run once on 9 Oct 2026 (results commit <a href="{GH}/commit/{RES}"><code>{RES}</code></a>). Every result is shown here, including the nulls. T4’s headline number was seen in a pipeline check before the freeze, so it is listed separately as exploratory. Log: <a href="{GH}/blob/main/TEST_LOG.md">TEST_LOG.md</a>.</p>
+<div class="split">
+<div class="split-col">
+<h3 class="sub-h">Confirmatory <span class="soft">(pre-registered, clean)</span></h3>
+<div class="verdicts"><span class="vchip yes">T1 supported</span><span class="vchip yes">T2 supported</span><span class="vchip no">T3 null</span><span class="vchip no">T5 null</span></div>
+<div class="credits-wrap"><table class="credits rtab">{thead}<tbody>{tab_conf}</tbody></table></div>
+</div>
+<div class="split-col">
+<h3 class="sub-h">Exploratory</h3>
+<div class="verdicts"><span class="vchip exp">T4 exploratory signal</span></div>
+<div class="credits-wrap"><table class="credits rtab">{thead}<tbody>{tab_exp}</tbody></table></div>
+<p class="note">We found a signal, but because we saw it before the freeze, it doesn’t count as a clean pre-registered test.</p>
+</div>
+</div>
+<p class="note">p = one-sided Monte Carlo p value (10,000 random draws; T4: 1,000). The smallest possible values are 1/10,001 and 1/1,001. Holm p is adjusted for running five tests. “Supported” (confirmatory) requires Holm p &lt; 0.05, an effect in the stated direction, and passing the named robustness check. T4 is labelled exploratory because its primary result was seen before the freeze.</p>
 
 <section id="T1" class="rsec"><h2><span class="ga" lang="ga">Tuamaí dingeacha</span>T1 · Wedge tombs and the setting Sun: <em class="yes">supported</em></h2>
 <div class="rgrid"><div>{rose(t1['bin_counts'], 10)}<p class="note center">Facing directions of the {t1['n']} wedge tombs (area ∝ count). The SW bin (gold) holds the midwinter sunset at every site.</p></div><div>
@@ -64,7 +80,8 @@ page = f'''<!doctype html>
 <p><b>{t3['primary']['stat']} of {t3['n']}</b> stone rows point (at their lower-horizon end) within 1.5° of a major or minor standstill declination. Random directions give {t3['primary']['null_random']['mean']:.1f} on average (p = {p(t3['primary']['p_random'])}), and directions aimed at horizon peaks give {t3['primary']['null_peaks']['mean']:.1f} (p = {p(t3['primary']['p_peaks'])}). There is no excess. Cork/Kerry is slightly above chance (+{t3['robustness']['subsets']['cork_kerry']['effect_vs_null1']:.2f}) and the rest is below (−{abs(t3['robustness']['subsets']['rest']['effect_vs_null1']):.2f}).</p>
 <p><b>What it means:</b> on SMR compass data, this does not replicate Ruggles’s lunar preference for the Cork–Kerry rows. Compass phrases are much coarser than his theodolite surveys, so a weak real pattern could be hidden. This is a null result, not proof of absence.</p></section>
 
-<section id="T4" class="rsec"><h2><span class="ga" lang="ga">Infheictheacht</span>T4 · Passage-tomb intervisibility: <em class="yes">supported, with a caveat</em></h2>
+<section id="T4" class="rsec"><h2><span class="ga" lang="ga">Infheictheacht</span>T4 · Passage-tomb intervisibility: <em class="exp">exploratory signal</em></h2>
+<p class="note">We found a signal, but because we saw it before the freeze, it doesn’t count as a clean pre-registered test.</p>
 <p><b>{pc(t4['primary']['stat'])}</b> of the {t4['n']} passage tombs can see at least one other passage tomb within 10 km over the real terrain, against {pc(t4['primary']['null']['mean'])} for random points on similar ground near each cemetery. p = {p(t4['primary']['p'])} (the floor for 1,000 draws), Holm p = {p(t4['p_holm'])}. Of the tombs that see another, {pc(t4['secondary_higher']['stat'])} see a <b>higher</b> one (chance: {pc(t4['secondary_higher']['null']['mean'])}). For comparison, Prendergast (2016) found 52 of 132 tombs directed at other tombs, 49 of them higher.</p>
 <div class="credits-wrap"><table class="credits"><thead><tr><th>Pair separation</th><th>Real pairs intervisible</th><th>Random pairs</th></tr></thead><tbody>{bt}</tbody></table></div>
 <p><b>The caveat, stated before scoring:</b> passage tombs come in tight cemeteries, and the random points do not keep that clustering, so part of the gap is just that real tombs have more near neighbours. The distance table (added after the T4 result had been seen, so it is descriptive only) shows that even at 3–10 km, real pairs see each other far more often than random pairs (62% against 6%). Tombs sit on summits and ridges, and that siting makes them visible. <b>Disclosure:</b> T4 does not use compass data, and its headline number was seen during a code check before the freeze. The code was not changed afterwards.</p></section>
