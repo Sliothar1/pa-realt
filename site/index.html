@@ -194,14 +194,25 @@
 
   <section id="tests" class="reveal" aria-labelledby="tH">
     <h2 class="sect" id="tH"><span class="ga" lang="ga">Tástálacha</span>Pre-registered tests</h2>
-    <p class="lead">Following the PA Marine approach, each test is written down, with its data, null model and pass rule, <b>before</b> anything is scored. The tests were scored on 9 Oct 2026 with code frozen beforehand (commit <code>c244e8f</code>). Three found an effect and two found nothing, as summarised below. <a href="results.html"><b>Full results · Torthaí →</b></a> The full protocol is in <a id="lnkResearch" href="#">RESEARCH.md</a> and <a id="lnkPrereg" href="#">prereg/tests_v1.json</a>.</p>
-    <ol class="tests">
-      <li id="t1"><b>Wedge tombs and the setting Sun</b><p>Wedge tombs whose SMR description says which way the tomb faces (“faces”, “opens to”, “entrance at”). 51 of the 309 records with a compass phrase qualify. Do more of them fall in the bin that holds the midwinter sunset than random directions would? Tested with 10,000 random-rotation draws, a V-test against 236°, and Cork and Kerry left out as a check.</p></li>
-      <li id="t2"><b>Passage tombs at solstice, equinox and standstill declinations</b><p>34 passage tombs with a parsed facing direction, plus the 2 surveyed axes with published declinations (Newgrange and Cairn T). Each is converted to a declination through its own real horizon and scored against the 7 solar and lunar targets, with random directions as the comparison. The NMS 2024 national survey (136 tombs, global p = 0.896) is the benchmark.</p></li>
-      <li id="t3"><b>Stone rows and the lunar standstills</b><p>119 stone rows with a parsed axis. Is the lower-horizon end near the Moon’s major or minor standstill declinations, compared with random directions and with directions aimed at horizon peaks? A replication of Ruggles (1994/96) on independent SMR data.</p></li>
-      <li id="t4"><b>Passage-tomb intervisibility</b><p>All 216 mapped passage tombs, Republic and NI. Can each see another passage tomb within 10 km (line of sight over the real terrain)? The comparison is random points on similar terrain near each cemetery (1,000 draws).</p></li>
-      <li id="t5"><b>Horizon peaks</b><p>245 stone-pair and stone-row axes. Do they point at a horizon peak (prominence of 0.5° or more) more often than random directions on the same site’s horizon?</p></li>
-    </ol>
+    <p class="lead">Following the PA Marine approach, each test is written down, with its data, null model and pass rule, <b>before</b> anything is scored. The tests were scored on 9 Oct 2026 with code frozen beforehand (commit <code>c244e8f</code>). Confirmatory tests T1 and T2 found an effect; T3 and T5 found nothing. T4 showed a signal but is listed as exploratory because that signal was seen before the freeze. <a href="results.html"><b>Full results · Torthaí →</b></a> The full protocol is in <a id="lnkResearch" href="#">RESEARCH.md</a> and <a id="lnkPrereg" href="#">prereg/tests_v1.json</a>.</p>
+    <div class="split">
+      <div class="split-col">
+        <h3 class="sub-h">Confirmatory <span class="soft">(pre-registered, clean)</span></h3>
+        <ol class="tests">
+          <li id="t1" data-tn="T1"><b>Wedge tombs and the setting Sun</b><p>Wedge tombs whose SMR description says which way the tomb faces (“faces”, “opens to”, “entrance at”). 51 of the 309 records with a compass phrase qualify. Do more of them fall in the bin that holds the midwinter sunset than random directions would? Tested with 10,000 random-rotation draws, a V-test against 236°, and Cork and Kerry left out as a check.</p></li>
+          <li id="t2" data-tn="T2"><b>Passage tombs at solstice, equinox and standstill declinations</b><p>34 passage tombs with a parsed facing direction, plus the 2 surveyed axes with published declinations (Newgrange and Cairn T). Each is converted to a declination through its own real horizon and scored against the 7 solar and lunar targets, with random directions as the comparison. The NMS 2024 national survey (136 tombs, global p = 0.896) is the benchmark.</p></li>
+          <li id="t3" data-tn="T3"><b>Stone rows and the lunar standstills</b><p>119 stone rows with a parsed axis. Is the lower-horizon end near the Moon’s major or minor standstill declinations, compared with random directions and with directions aimed at horizon peaks? A replication of Ruggles (1994/96) on independent SMR data.</p></li>
+          <li id="t5" data-tn="T5"><b>Horizon peaks</b><p>245 stone-pair and stone-row axes. Do they point at a horizon peak (prominence of 0.5° or more) more often than random directions on the same site’s horizon?</p></li>
+        </ol>
+      </div>
+      <div class="split-col">
+        <h3 class="sub-h">Exploratory</h3>
+        <ol class="tests">
+          <li id="t4" data-tn="T4"><b>Passage-tomb intervisibility</b> <span class="tag-exp">Exploratory signal</span><p>All 216 mapped passage tombs, Republic and NI. Can each see another passage tomb within 10 km (line of sight over the real terrain)? The comparison is random points on similar terrain near each cemetery (1,000 draws).</p>
+          <p class="note">We found a signal, but because we saw it before the freeze, it doesn’t count as a clean pre-registered test.</p></li>
+        </ol>
+      </div>
+    </div>
   </section>
 
   <section id="sources" class="reveal" aria-labelledby="sH">
