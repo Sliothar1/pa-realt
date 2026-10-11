@@ -47,7 +47,9 @@ dataReady=Promise.all(['data/sites.json','data/horizons.json','data/sky.json','d
 });
 dataReady.catch(e=>{console.error(e);$('#card').innerHTML='<p class="empty">Could not load data.</p>';});
 /* map: on approach (libraries fetched in parallel with the data), or at once for a #site= deep link; sky libraries: when Newgrange / sky / light-this-week come near */
-if(/site=/.test(location.hash))ensureMap();else whenNear($('#explore'),ensureMap);
+/* perf: start the map only once the page has loaded and the main thread is idle, so Leaflet and ~5k markers don't block first paint/input */
+const idle=fn=>{const go=()=>('requestIdleCallback' in window)?requestIdleCallback(fn,{timeout:2500}):setTimeout(fn,200);if(document.readyState==='complete')go();else addEventListener('load',go,{once:true});};
+if(/site=/.test(location.hash))ensureMap();else whenNear($('#explore'),()=>idle(ensureMap));
 ['#newgrange','#sky','#lightweek'].forEach(id=>whenNear($(id),ensureSky));
 if(/^#(newgrange|sky|lightweek)/.test(location.hash))ensureSky();
 
@@ -86,7 +88,7 @@ function initMap(){
   const m=/site=([^&]+)/.exec(location.hash),mz=/[&?]z=(\d+)/.exec(location.hash);if(m){const s=SITES.find(x=>x[0]===decodeURIComponent(m[1]));if(s){if(!mz)map.setView([s[2],s[3]],12);else map.setView([s[2],s[3]],+mz[1]);userMoved=true;select(s);}}
   /* iOS Safari: the container can change size after fonts/layout settle; re-measure, and re-fit until the user moves the map */
   const el=map.getContainer();['pointerdown','wheel','touchstart'].forEach(t=>el.addEventListener(t,()=>{userMoved=true;},{passive:true}));
-  const refit=()=>{map.invalidateSize(false);if(!userMoved&&!eggOn)fitIreland();};
+  let lastW=0,lastH=0,rfT=0;const refit=()=>{clearTimeout(rfT);rfT=setTimeout(()=>{const w=el.clientWidth,h=el.clientHeight;if(w===lastW&&h===lastH)return;lastW=w;lastH=h;map.invalidateSize(false);if(!userMoved&&!eggOn)fitIreland();},60);};/* perf: debounced, and only when the container really changed size (each refit redraws every marker) */
   if(window.ResizeObserver)new ResizeObserver(()=>refit()).observe(el);
   addEventListener('load',refit);addEventListener('orientationchange',()=>setTimeout(refit,300));addEventListener('pageshow',refit);
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refit);setTimeout(refit,400);setTimeout(refit,1500);

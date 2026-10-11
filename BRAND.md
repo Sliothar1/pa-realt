@@ -8,7 +8,7 @@ PA is the shared brand for Garry Lohan's open-science sites: **PA Marine** (Iris
    - **`.topline`**: the PA mark plus the site name (`.brandlink`), a few top links (`.toplinks`; links marked `.opt` drop out on mobile), and a ◐ theme toggle.
    - **`.headline`**: the site's line-art **emblem** (inline SVG, single-weight stroke), the eyebrow **"Fáilte · Welcome"**, an `h1` in the serif face, and a one-line `.sub`.
 2. **Sections `.sect`**, each with an **Irish label in italic serif** (`.ga`) above the English title, e.g. *Tástálacha* / Pre-registered tests, or *Foinsí agus ceadúnais* / Data, sources & licences. Irish appears as a companion, never as decoration-only text, and every Irish string is sourced (focloir.ie, Tailte Éireann/logainm, Fingal bilingual leaflet). If no sourced term exists, leave it blank.
-3. **Credit section "Fúinn · About"**: "a project by Garry Lohan (… ATU Galway)", with an honest scope and disclaimer paragraph.
+3. **Credit section "Fúinn · About"**: "a project by Garry Lohan (owner; mechanical engineer and lecturer, no institutional affiliation shown)", with an honest scope and disclaimer paragraph.
 4. **PA family strip `#paFamily`**: a small row with one chip per sister site (mark + name). The current site is shown as "you are here". It is generated from `PA_CONFIG.family` in `site/js/config.js`, so adding a site means adding one line.
 5. **Footer**: a **seanfhocal** with its translation, then "Déanta i nGaillimh · Made in Galway", the © line and data credits.
 6. **Fixed bottom demo strip `.disclaimer`**: one short line stating that this is a research prototype and not an official product.

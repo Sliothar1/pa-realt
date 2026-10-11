@@ -9,7 +9,7 @@
 - an honest "claims vs evidence" section;
 - real horizons for every monument, a "Light this week · Solas na seachtaine" panel, printable visit sheets, and pre-registered test results.
 
-It is a project by **Garry Lohan** (mechanical engineer and lecturer, ATU Galway), and a sister site of [PA Marine](https://sliothar1.github.io/PA-Marine-Demo/) (see `BRAND.md`).
+It is a project by **Garry Lohan** (mechanical engineer and lecturer), who owns it, and a sister site of [PA Marine](https://sliothar1.github.io/PA-Marine-Demo/) (see `BRAND.md`).
 
 | | |
 |---|---|
