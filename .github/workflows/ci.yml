@@ -49,6 +49,10 @@ jobs:
         run: |
           python3 scripts/build_list.py
           git diff --exit-code site/list.html || (echo "::error::Run scripts/build_list.py and commit site/list.html" && exit 1)
+      - name: results.html matches scripts/build_results.py
+        run: |
+          python3 scripts/build_results.py
+          git diff --exit-code site/results.html || (echo "::error::Run scripts/build_results.py and commit site/results.html" && exit 1)
       - name: Static a11y gate (token contrast per theme, skip links, reduced motion, lang, lang=ga heuristic, list view)
         run: python3 scripts/a11y_check.py a11y.json
       - name: Install Playwright and axe-core
