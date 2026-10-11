@@ -1,7 +1,7 @@
 name: data-checks
 on:
   push:
-    branches: [main, pa-core, review-2026-10-11]
+    branches: [main, pa-core]
   pull_request:
 permissions:
   contents: read
