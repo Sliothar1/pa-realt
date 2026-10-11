@@ -1,0 +1,14 @@
+{
+ "adapter": "tabular",
+ "file": "data/monuments.csv",
+ "delimiter": ",",
+ "assoc": "A_mon",
+ "type": "mon",
+ "id_col": "smrs",
+ "source": "National Monuments Service SMR open data (SMROpenData_20251201.csv, CC BY 4.0), record {id}",
+ "source_by_prefix": {"NI:": "Northern Ireland SMR via OpenDataNI (nismr_10092026.geojson, OGL v3), record {id}"},
+ "status": "pinned",
+ "meta_json": {"file": "data/monuments_meta.json", "row": "dataset:smr", "col": "meta",
+               "source": "scripts/build_data.py over SMROpenData_20251201.csv, Tailte Éireann townlands, NI SMR",
+               "status": "pinned"}
+}

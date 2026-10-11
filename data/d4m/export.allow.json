@@ -1,0 +1,7 @@
+{
+ "types": {
+  "mon": ["group", "lat", "lon", "townland", "townland_ga", "county_idx", "itm_e", "itm_n", "meta|order"],
+  "dataset": ["meta"]
+ },
+ "include_prov": false
+}

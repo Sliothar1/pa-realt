@@ -8,3 +8,5 @@ __pycache__/
 data/tests/horizons_all.npz
 data/tests/synthetic_results.json
 tap-here.png
+build/
+__pycache__/

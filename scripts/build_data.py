@@ -99,8 +99,10 @@ meta = {
 }
 for g in GROUPS: meta['groups'][g]['n'] = sum(1 for x in rows if x[1] == g)
 meta['counties_ga'] = [county_ga.get(c, '') for c in counties]; meta['counties'] = counties
-json.dump({'meta': meta, 'sites': core}, open(f'{OUT}/sites.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-json.dump({'sites': ss}, open(f'{OUT}/standing.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+# pa-core (vendor/pa-core): the table goes to data/monuments.csv + data/monuments_meta.json;
+# scripts/d4m_build.py ingests, validates and exports it to site/data/sites.json + standing.json.
+import sys; sys.path.insert(0, 'scripts'); from monuments_io import write_monuments
+write_monuments(core, ss, meta)
 
 # class summary for RESEARCH.md
 pre = cls_counts[[bool(re.search(r'megalith|passage|stone circle|stone row|standing stone|wedge|portal|court tomb|henge|boulder|cursus|rock art|cupmark|cairn|barrow', k, re.I)) for k in cls_counts.index]]

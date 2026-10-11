@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "assocs": {
+  "A_mon": {
+   "columns": {"group": "str", "lat": "float", "lon": "float", "townland": "str", "townland_ga": "str",
+               "county_idx": "int", "itm_e": "int", "itm_n": "int", "meta": "json_ordered"},
+   "required": {"mon": ["group", "lat", "lon", "townland", "townland_ga", "county_idx", "itm_e", "itm_n"],
+                "dataset": ["meta"]}
+  },
+  "A_prop": {
+   "columns": {"class|*": "flag", "county|*": "flag", "townland_ga|*": "flag"}
+  },
+  "A_sky": {
+   "columns": {"WS_rise|*": "float", "WS_set|*": "float", "SS_rise|*": "float", "SS_set|*": "float",
+               "EQ_rise|*": "float", "EQ_set|*": "float", "MjN_set|*": "float", "MjS_rise|*": "float"}
+  }
+ }
+}
