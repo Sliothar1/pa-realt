@@ -70,3 +70,4 @@
   .sheet table,.sheet svg{break-inside:avoid}
 }
 .strip text{font-size:15px}.strip{min-height:70px}
+[data-theme="dawn"] .subpage .eyebrow,[data-theme="dawn"] body.subpage .eyebrow{color:var(--muted)}
