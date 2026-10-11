@@ -30,6 +30,8 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then BASE=origin/${{ github.base_ref }}; else BASE=${{ github.event.before }}; fi
           if ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then BASE=HEAD~1; fi
+          if ! git cat-file -e "$BASE:data/d4m/A_prov.tsv" 2>/dev/null; then
+            echo "Base $BASE predates pa-core (no A_prov; rows were renamed SMR -> mon:SMR in this migration): guard starts from the next commit"; exit 0; fi
           python3 vendor/pa-core/pa_d4m.py diff "git:$BASE" data/d4m --max-drop 10
       - name: Privacy grep on published data (no consent / age_band / private fields)
         run: |
