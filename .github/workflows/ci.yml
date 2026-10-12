@@ -14,9 +14,9 @@ jobs:
         with: {fetch-depth: 0}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: pa-core pinned (v0.2.0) and its unit tests pass
+      - name: pa-core pinned (v0.3.0) and its unit tests pass
         run: |
-          python3 -c "import sys; sys.path.insert(0,'vendor/pa-core'); import pa_core; assert pa_core.__version__=='0.2.0', pa_core.__version__"
+          python3 -c "import sys; sys.path.insert(0,'vendor/pa-core'); import pa_core; assert pa_core.__version__=='0.3.0', pa_core.__version__"
           (cd vendor/pa-core && python3 -m unittest discover -s tests)
       - name: Prereg-frozen files unchanged since the freeze (c244e8f)
         run: git diff --exit-code c244e8f -- prereg/tests_v1.json prereg/addendum_v1.md scripts/orient_parse.py scripts/run_tests.py scripts/horizon_all.py scripts/horizon.py scripts/astro.py data/tests/orientations.json
