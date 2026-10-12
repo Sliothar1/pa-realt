@@ -97,7 +97,7 @@ page = f'''<!doctype html>
 <p class="note">Data: NMS Sites and Monuments Record (CC BY 4.0), NI SMR (OGL v3), Copernicus GLO-30 DEM (© DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA). Code: <a href="{GH}/tree/main/scripts">scripts/</a>.</p></section>
 </main>
 <footer>
-<nav class="pa-family" aria-label="The PA family of sites"><a href="https://sliothar1.github.io/PA-Marine-Demo/">PA Marine</a><a href="./" aria-current="page">PA Réalt</a><a href="family.html" class="pa-hub">All PA sites →</a></nav>
+<nav class="pa-family" aria-label="The PA family of sites"><a href="https://sliothar1.github.io/PA-Marine-Demo/">PA Marine</a><a href="./" aria-current="page">PA Réalt</a><a href="https://hurlingwiki.vercel.app">PA Iomáint · HurlingWiki</a><a href="https://sliothar1.github.io/pa-ui-mhaine/">PA Uí Mhaine</a><a href="family.html" class="pa-hub">All PA sites →</a></nav>
 <p class="pa-credit">Designed and built by Garry Lohan · <a href="https://scholar.google.com/citations?user=9aBECzQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://www.linkedin.com/in/garry-lohan-14923814" target="_blank" rel="noopener">LinkedIn</a></p>
 </footer>
 </body></html>'''
