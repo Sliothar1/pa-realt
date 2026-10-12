@@ -26,7 +26,7 @@ It is a project by **Garry Lohan** (mechanical engineer and lecturer, ATU Galway
 | `site/js/ask.js` | **Ask PA Réalt · Fiafraigh**: answers built in the browser from the site's data (per-type templates plus hand-written answers for featured sites). No AI |
 | `PAID_TIER_PLAN.md` | design for the planned paid "Deep answer" AI tier (not live) |
 | `scripts/` | data pipeline: `fetch_data.sh` → `townland_pip.py` → `build_data.py` → `horizon.py` → `build_stars.py` → `scope_notes.py` → `build_ask.py`; `d4m_build.py` (runs `d4m_triples.py`) right after `build_data.py`; `stamp.py` (name into the static HTML), `shoot.py`, `egg_test.py`, `ask_test.py` (headless checks) |
-| `vendor/pa-core`, `data/d4m/` | the shared PA data contract (pa-core v0.2.0, pinned). `build_data.py` writes `data/monuments.csv`; `scripts/d4m_build.py` ingests, validates and exports it to `site/data/sites.json` + `standing.json` and writes `A_prop`/`A_sky` (rows `mon:<SMR>`). See `prereg/addendum-2026-10-11.md` |
+| `vendor/pa-core`, `data/d4m/` | the shared PA data contract (pa-core v0.3.0, pinned). `build_data.py` writes `data/monuments.csv`; `scripts/d4m_build.py` ingests, validates and exports it to `site/data/sites.json` + `standing.json` and writes `A_prop`/`A_sky` (rows `mon:<SMR>`). See `prereg/addendum-2026-10-11.md` |
 | `data/` | derived summaries (`smr_class_summary.json`, D4M triples); the raw data is not committed |
 
 **Rename the project.** Edit `site/js/config.js`, then run `python scripts/stamp.py`.
